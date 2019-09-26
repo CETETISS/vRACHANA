@@ -23,11 +23,14 @@ echo "[run] start memcache" ;
 echo "[run] start rabbitmq-server" ;
 /etc/init.d/rabbitmq-server start 
 
+echo "[run]start elasticsearch" ;
+/etc/init.d/elasticsearch start
+
 echo "[run] go to the code folder" ;
 cd /home/docker/code/clixoer/gnowsys-ndf/ ; 
 
-echo "[run] smtpd.sh" ;							  
-bash /home/docker/code/scripts/smtpd.sh ; 						
+echo "[run] smtpd.sh" ;
+bash /home/docker/code/scripts/smtpd.sh ;
 
 # nginx-app logs
 if [[ -f /var/log/nginx/school.server.org.error.log ]] && [[ -f /var/log/nginx/school.server.org.access.log ]] ; then
