@@ -1,0 +1,33 @@
+# clixoer container
+#
+
+version: '2'
+
+services:
+
+  clixoer:
+    image: clixoer-25092019  
+    container_name: clix-oer
+    restart: always
+    environment:
+      - TERM=xterm
+   # hostname: 'staging-clixoer.tiss.edu'
+    ports:
+      - "1080:80"           #http
+      - "1043:443"          #https
+      - "1022:22"           #ssh
+      - "1025:25"           #smtp
+      - "1044:143"          #g-imap
+      - "1087:587"          #g-smtp
+      - "1042:5432"         #postgres
+      - "1040:8000"         #dev
+      - "1047:27017"        #mongodb
+      - "9201:9201"         #elasticsearch
+      - "1055:5555"         #celery-flower
+      
+      
+    volumes:
+      # requires proper authorizations, see rights.sh (incase of 403-forbidden error on web browser, please check /data/media permissions)
+      - /home/core/clixoer/data:/data
+      - /home/core/clixoer/code:/home/docker/code
+      - /home/core/clixoer/static:/static  
