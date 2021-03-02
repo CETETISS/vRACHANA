@@ -1,14 +1,14 @@
 #!/bin/bash
 
 #Starting mongodb   
-#echo "No idea about arch hence starting normally.";
-#echo "[run] start mongod";
-#mongod  --config /home/docker/code/confs/mongod.conf & 
+echo "No idea about arch hence starting normally.";
+echo "[run] start mongod";
+mongod  --config /home/docker/code/confs/mongod.conf & 
 
 #sleep 60;
 
-echo "[run] start postgresql" ;     # Used for postgres db
-/etc/init.d/postgresql start ;      # Used for postgres db
+#echo "[run] start postgresql" ;     # Used for postgres db
+#/etc/init.d/postgresql start ;      # Used for postgres db
 #/etc/init.d/postgresql status ;      # Used for postgres db
 
 echo "[run] start postfix" ;
@@ -23,8 +23,8 @@ echo "[run] start memcache" ;
 #echo "[run] start rabbitmq-server" ;
 #/etc/init.d/rabbitmq-server start 
 
-echo "[run]start elasticsearch" ;
-/etc/init.d/elasticsearch start
+#echo "[run]start elasticsearch" ;
+#/etc/init.d/elasticsearch start
 
 #echo "[run] go to the code folder" ;
 #cd /home/docker/code/clixoer/gnowsys-ndf/ ; 
