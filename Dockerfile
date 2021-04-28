@@ -23,9 +23,8 @@ RUN apt-get install -y wget
 
 RUN apt-get install -y python-software-properties  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  apt-get install -y software-properties-common python-software-properties  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
-   &&  add-apt-repository -y ppa:nginx/stable  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  add-apt-repository -y ppa:mc3man/trusty-media  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
-   &&  apt-get install -y curl   \
+   &&  apt-get install -y curl gnupg2 ca-certificates lsb-release  \
    &&  curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -   \
    &&  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -   \
    &&  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list   \
@@ -34,7 +33,12 @@ RUN apt-get install -y python-software-properties  | sed -e "s/^/$(date +%Y%m%d-
    &&  apt-add-repository ppa:brightbox/ruby-ng  \
    &&  apt-get install apt-transport-https -y --force-yes
 
-RUN echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
+RUN echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list   \
+   &&  echo "deb http://nginx.org/packages/ubuntu `lsb_release -cs` nginx"     | sudo tee /etc/apt/sources.list.d/nginx.list    \
+   &&  echo "deb http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx"     | sudo tee /etc/apt/sources.list.d/nginx.list
+
+RUN curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add -  /
+   &&  sudo apt-key fingerprint ABF5BD827BD9BF62
 
 RUN apt-key update && apt-get update  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 RUN apt-get upgrade -y
