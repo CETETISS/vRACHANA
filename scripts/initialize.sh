@@ -7,8 +7,8 @@ mongod  --config /home/docker/code/confs/mongod.conf &
 
 #sleep 60;
 
-echo "[run] start postgresql" ;     # Used for postgres db
-/etc/init.d/postgresql start ;      # Used for postgres db
+#echo "[run] start postgresql" ;     # Used for postgres db
+#/etc/init.d/postgresql start ;      # Used for postgres db
 #/etc/init.d/postgresql status ;      # Used for postgres db
 
 echo "[run] start postfix" ;
@@ -20,14 +20,14 @@ echo "[run] start ssh" ;
 echo "[run] start memcache" ;
 /etc/init.d/memcached start
 
-echo "[run] start rabbitmq-server" ;
-/etc/init.d/rabbitmq-server start 
+#echo "[run] start rabbitmq-server" ;
+#/etc/init.d/rabbitmq-server start 
 
-echo "[run]start elasticsearch" ;
-/etc/init.d/elasticsearch start
+#echo "[run]start elasticsearch" ;
+#/etc/init.d/elasticsearch start
 
-echo "[run] go to the code folder" ;
-cd /home/docker/code/clixoer/gnowsys-ndf/ ; 
+#echo "[run] go to the code folder" ;
+#cd /home/docker/code/clixoer/gnowsys-ndf/ ; 
 
 echo "[run] smtpd.sh" ;
 bash /home/docker/code/scripts/smtpd.sh ;
