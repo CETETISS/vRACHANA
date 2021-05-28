@@ -28,7 +28,7 @@ RUN curl -sL https://deb.nodesource.com/setup_15.x | bash - \
 RUN apt-get update  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 RUN apt-get upgrade -y | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
-RUN apt-get install -y dialog net-tools build-essential git python3 python3-pip python3-setuptools python3-dev rcs emacs libjpeg-dev memcached libevent-dev libfreetype6-dev zlib1g-dev
+RUN apt-get install -y gettext  dialog net-tools build-essential git python3 python3-pip python3-setuptools python3-dev rcs emacs libjpeg-dev memcached libevent-dev libfreetype6-dev zlib1g-dev
 RUN apt-get install -y nginx supervisor curl make     openssh-client openssh-server   libpq-dev    | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 RUN apt-get install -y ffmpeg  ffmpeg2theora     bash-completion cron    nodejs     duplicity   libssl-dev libffi-dev   libxml2-dev libxslt1-dev python3-psycopg2 | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 RUN DEBIAN_FRONTEND=noninteractive  apt-get install -y mailutils postfix | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
@@ -113,7 +113,12 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime  | sed -e "s/^/$(date
    #&&  pip install -U pyyaml nltk  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    #&&  /home/docker/code/scripts/nltk-initialization.py  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
-#RUN echo yes | /usr/bin/python /home/docker/code/clixoer/gnowsys-ndf/manage.py collectstatic
+RUN django-admin.py compilemessages -l hi  \
+   &&  django-admin.py compilemessages -l pu  \
+   &&  django-admin.py compilemessages -l ta  \
+   &&  django-admin.py compilemessages -l te  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+RUN echo yes | /usr/bin/python /home/docker/code/clixoer/gnowsys-ndf/manage.py collectstatic
 
 CMD /home/docker/code/scripts/initialize.sh  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /"  2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
