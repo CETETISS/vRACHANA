@@ -118,7 +118,7 @@ RUN django-admin.py compilemessages -l hi  \
    &&  django-admin.py compilemessages -l ta  \
    &&  django-admin.py compilemessages -l te  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
-RUN echo yes | /usr/bin/python /home/docker/code/clixoer/gnowsys-ndf/manage.py collectstatic
+RUN echo yes | /usr/bin/python3 /home/docker/code/clixoer/gnowsys-ndf/manage.py collectstatic
 
 CMD /home/docker/code/scripts/initialize.sh  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /"  2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
