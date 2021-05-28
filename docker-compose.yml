@@ -27,8 +27,8 @@ services:
  
   # Clixoer container
   clixoer:
-    image: clixoer_02_03_2021:v1 
-    container_name: oer_v2
+    image: clixoer_2021:v2
+    container_name: clixoer_v2
     restart: always
     depends_on: 
       - elastic_db
