@@ -1,0 +1,215 @@
+
+######### Script run on : Mon May 30 17:04:40 2022 #########
+############################################################
+
+ CSVType: Follwoing file (/home/docker/code/verc/ndf/management/commands/schema_files/RTs.csv) found !
+ JSONType: Following file (/home/docker/code/verc/ndf/management/commands/schema_files/RTs.json) created successfully.
+ Task initiated: Processing json-file...
+
+ Creating RelationType(person_belongs_to_country) ...
+ RelationType (person_belongs_to_country) created successfully.
+
+ Creating RelationType(organization_belongs_to_country) ...
+ RelationType (organization_belongs_to_country) created successfully.
+
+ Creating RelationType(person_belongs_to_state) ...
+ RelationType (person_belongs_to_state) created successfully.
+
+ Creating RelationType(organization_belongs_to_state) ...
+ RelationType (organization_belongs_to_state) created successfully.
+
+ Creating RelationType(person_belongs_to_district) ...
+ RelationType (person_belongs_to_district) created successfully.
+
+ Creating RelationType(organization_belongs_to_district) ...
+ RelationType (organization_belongs_to_district) created successfully.
+
+ Creating RelationType(student_belongs_to_college) ...
+ RelationType (student_belongs_to_college) created successfully.
+
+ Creating RelationType(student_belongs_to_university) ...
+ RelationType (student_belongs_to_university) created successfully.
+
+ Creating RelationType(contact_person) ...
+ RelationType (contact_person) created successfully.
+
+ Creating RelationType(faculty_incharge_of_university) ...
+ RelationType (faculty_incharge_of_university) created successfully.
+
+ Creating RelationType(faculty_incharge_of_college) ...
+ RelationType (faculty_incharge_of_college) created successfully.
+
+ Creating RelationType(officer_incharge_of) ...
+ RelationType (officer_incharge_of) created successfully.
+
+ Creating RelationType(nss_coordinator_of) ...
+ RelationType (nss_coordinator_of) created successfully.
+
+ Creating RelationType(affiliated_college) ...
+ RelationType (affiliated_college) created successfully.
+
+ Creating RelationType(event_organised_by) ...
+ RelationType (event_organised_by) created successfully.
+
+ Creating RelationType(event_coordinator) ...
+ RelationType (event_coordinator) created successfully.
+
+ Creating RelationType(event_has_participants) ...
+ RelationType (event_has_participants) created successfully.
+
+ Creating RelationType(has_attended) ...
+ RelationType (has_attended) created successfully.
+
+ Creating RelationType(has_attendees) ...
+ RelationType (has_attendees) created successfully.
+
+ Creating RelationType(session_of) ...
+ RelationType (session_of) created successfully.
+
+ Creating RelationType(course_has_event) ...
+ RelationType (course_has_event) created successfully.
+
+ Creating RelationType(announced_for) ...
+ RelationType (announced_for) created successfully.
+
+ Creating RelationType(acourse_for_college) ...
+ RelationType (acourse_for_college) created successfully.
+
+ Creating RelationType(student_of_caste_category) ...
+ RelationType (student_of_caste_category) created successfully.
+
+ Creating RelationType(student_has_domicile) ...
+ RelationType (student_has_domicile) created successfully.
+
+ Creating RelationType(selected_course) ...
+ RelationType (selected_course) created successfully.
+
+ Creating RelationType(trainer_of_course) ...
+ RelationType (trainer_of_course) created successfully.
+
+ Creating RelationType(trainer_of_college) ...
+ RelationType (trainer_of_college) created successfully.
+
+ Creating RelationType(trainer_teaches_course_in_college) ...
+ RelationType (trainer_teaches_course_in_college) created successfully.
+
+ Creating RelationType(master_trainer_of_course) ...
+ RelationType (master_trainer_of_course) created successfully.
+
+ Creating RelationType(master_trainer_of_university) ...
+ RelationType (master_trainer_of_university) created successfully.
+
+ Creating RelationType(developer_of_course) ...
+ RelationType (developer_of_course) created successfully.
+
+ Creating RelationType(district_of) ...
+ RelationType (district_of) created successfully.
+
+ Creating RelationType(has_group) ...
+ RelationType (has_group) created successfully.
+
+ Creating RelationType(has_login) ...
+ RelationType (has_login) created successfully.
+
+ Creating RelationType(group_has_batch) ...
+ RelationType (group_has_batch) created successfully.
+
+ GSystemTypeError (subject_type): This GSystemType (Batch) doesn't exists for creating RelationType (has_batch_member) !!!
+
+ While parsing RelationType(has_batch_member) got following error at line #284...
+ 
+ GSystemTypeError (subject_type): This GSystemType (Batch) doesn't exists for creating RelationType (has_batch_member) !!!
+
+ Creating RelationType(has_batch_member) ...
+ RelationTypeError: Failed to create (has_batch_member) as ValidationError (RelationType:None) (Only lists and tuples may be used in a list field: ['member_of', 'object_type'] Invalid ObjectID: ['subject_type'])
+
+ GSystemTypeError (subject_type): This GSystemType (Batch) doesn't exists for creating RelationType (has_course) !!!
+
+ While parsing RelationType(has_course) got following error at line #284...
+ 
+ GSystemTypeError (subject_type): This GSystemType (Batch) doesn't exists for creating RelationType (has_course) !!!
+
+ Creating RelationType(has_course) ...
+ RelationTypeError: Failed to create (has_course) as ValidationError (RelationType:None) (Only lists and tuples may be used in a list field: ['member_of', 'object_type'] Invalid ObjectID: ['subject_type'])
+
+ Creating RelationType(for_acourse) ...
+ RelationType (for_acourse) created successfully.
+
+ Creating RelationType(for_college) ...
+ RelationType (for_college) created successfully.
+
+ Creating RelationType(for_university) ...
+ RelationType (for_university) created successfully.
+
+ Creating RelationType(has_current_approval_task) ...
+ RelationType (has_current_approval_task) created successfully.
+
+ Creating RelationType(event_has_batch) ...
+ RelationType (event_has_batch) created successfully.
+
+ GSystemTypeError (subject_type): This GSystemType (CourseEventGroup) doesn't exists for creating RelationType (group_has_course_event) !!!
+
+ While parsing RelationType(group_has_course_event) got following error at line #284...
+ 
+ GSystemTypeError (subject_type): This GSystemType (CourseEventGroup) doesn't exists for creating RelationType (group_has_course_event) !!!
+
+ Creating RelationType(group_has_course_event) ...
+ RelationTypeError: Failed to create (group_has_course_event) as ValidationError (RelationType:None) (Only lists and tuples may be used in a list field: ['member_of', 'object_type'] Invalid ObjectID: ['subject_type'])
+
+ GSystemTypeError (subject_type): This GSystemType (BaseCourseGroup) doesn't exists for creating RelationType (has_logo) !!!
+
+ While parsing RelationType(has_logo) got following error at line #284...
+ 
+ GSystemTypeError (subject_type): This GSystemType (BaseCourseGroup) doesn't exists for creating RelationType (has_logo) !!!
+
+ Creating RelationType(has_logo) ...
+ RelationTypeError: Failed to create (has_logo) as ValidationError (RelationType:None) (Only lists and tuples may be used in a list field: ['member_of', 'object_type'] Invalid ObjectID 1.Invalid ObjectID 2.Invalid ObjectID 3.Invalid ObjectID 4.Invalid ObjectID: ['subject_type'])
+
+ Creating RelationType(clone_of) ...
+ RelationType (clone_of) created successfully.
+
+ GSystemTypeError (subject_type): This GSystemType (Forum) doesn't exists for creating RelationType (has_thread) !!!
+
+ While parsing RelationType(has_thread) got following error at line #284...
+ 
+ GSystemTypeError (subject_type): This GSystemType (Forum) doesn't exists for creating RelationType (has_thread) !!!
+
+ Creating RelationType(has_thread) ...
+ RelationTypeError: Failed to create (has_thread) as ValidationError (RelationType:None) (Only lists and tuples may be used in a list field: ['member_of', 'object_type'] Invalid ObjectID 1.Invalid ObjectID 2.Invalid ObjectID 3.Invalid ObjectID 4.Invalid ObjectID 5.Invalid ObjectID 6.Invalid ObjectID 7.Invalid ObjectID 8.Invalid ObjectID 9.Invalid ObjectID 10.Invalid ObjectID: ['subject_type'])
+
+ Creating RelationType(has_assetcontent) ...
+ RelationType (has_assetcontent) created successfully.
+
+ Creating RelationType(has_subtitle) ...
+ RelationType (has_subtitle) created successfully.
+
+ Creating RelationType(has_transcript) ...
+ RelationType (has_transcript) created successfully.
+
+ Creating RelationType(has_alt_content) ...
+ RelationType (has_alt_content) created successfully.
+
+ Creating RelationType(translation_of) ...
+ RelationType (translation_of) created successfully.
+
+ Creating RelationType(has_profile_pic) ...
+ RelationType (has_profile_pic) created successfully.
+
+ Creating RelationType(has_banner_pic) ...
+ RelationType (has_banner_pic) created successfully.
+
+ Creating RelationType(has_thread) ...
+ RelationType (has_thread) created successfully.
+
+ Creating RelationType(is_help_material) ...
+ RelationType (is_help_material) created successfully.
+
+ Creating RelationType(is_offline_package) ...
+ RelationType (is_offline_package) created successfully.
+
+ Creating RelationType(has_thumbnail) ...
+ RelationType (has_thumbnail) created successfully.
+
+ Task finised: Successfully processed json-file.
+
+ ============================================================ End of Iteration ============================================================
