@@ -1,0 +1,59 @@
+subject_type,member_of,name,altnames,inverse_name,object_type,object_cardinality,relation_type_scope,subject_scope,object_scope,is_reflexive,is_symmetric,is_transitive
+"[""Person""]","[""Binary""]",person_belongs_to_country,Country,Person,"[""Person""]",1,[],[],[],False,False,False
+"[""College"", ""University""]","[""Binary""]",organization_belongs_to_country,Country,Organisation/Institute,"[""College"", ""University""]",1,[],[],[],False,False,False
+"[""Person""]","[""Binary""]",person_belongs_to_state,State,Person,"[""Person""]",1,[],[],[],False,False,False
+"[""College"", ""University""]","[""Binary""]",organization_belongs_to_state,State,Organisation/Institute,"[""College"", ""University""]",1,[],[],[],False,False,False
+"[""Person""]","[""Binary""]",person_belongs_to_district,District,Person,"[""Person""]",1,[],[],[],False,False,False
+"[""College"", ""University""]","[""Binary""]",organization_belongs_to_district,District,Organisation/Institute,"[""College"", ""University""]",1,[],[],[],False,False,False
+"[""Student""]","[""Binary""]",student_belongs_to_college,College ( Graduation ),Student,"[""Student""]",1,[],[],[],False,False,False
+"[""Student""]","[""Binary""]",student_belongs_to_university,University,Student,"[""Student""]",1,[],[],[],False,False,False
+"[""Person""]","[""Binary""]",contact_person,College(s),Contact Person(s),"[""Person""]",1,[],[],[],False,False,False
+"[""Faculty Coordinator""]","[""Binary""]",faculty_incharge_of_university,University,Faculty Coordinator(s),"[""Faculty Coordinator""]",1,[],[],[],False,False,False
+"[""Faculty Coordinator""]","[""Binary""]",faculty_incharge_of_college,College(s),Faculty Coordinator(s),"[""Faculty Coordinator""]",1,[],[],[],False,False,False
+"[""Program Officer""]","[""Binary""]",officer_incharge_of,College(s),Program Officer(s),"[""Program Officer""]",1,[],[],[],False,False,False
+"[""NSS Coordinator""]","[""Binary""]",nss_coordinator_of,College,NSS Coordinator,"[""NSS Coordinator""]",1,[],[],[],False,False,False
+"[""University""]","[""Binary""]",affiliated_college,Affiliated Colleges,Affiliated to,"[""University""]",1,[],[],[],False,False,False
+"[""Event""]","[""Binary""]",event_organised_by,Organised by,Event(s),"[""Event""]",1,[],[],[],False,False,False
+"[""Event""]","[""Binary""]",event_coordinator,Coordinator(s),Event(s),"[""Event""]",1,[],[],[],False,False,False
+"[""Event""]","[""Binary""]",event_has_participants,Participant(s)/Attende(es),Event(s),"[""Event""]",1,[],[],[],False,False,False
+"[""Event""]","[""Binary""]",has_attended,Attended,Event,"[""Event""]",1,[],[],[],False,False,False
+"[""Event""]","[""Binary""]",has_attendees,Attendees,Event,"[""Event""]",1,[],[],[],False,False,False
+"[""Event""]","[""Binary""]",session_of,Session of,Classroom Session Event,"[""Event""]",1,[],[],[],False,False,False
+"[""NUSSD Course""]","[""Binary""]",course_has_event,Event(s),Course(s),"[""NUSSD Course""]",1,[],[],[],False,False,False
+"[""Announced Course""]","[""Binary""]",announced_for,Course,Announced Course,"[""Announced Course""]",1,[],[],[],False,False,False
+"[""Announced Course""]","[""Binary""]",acourse_for_college,College,Announced Course,"[""Announced Course""]",1,[],[],[],False,False,False
+"[""Student""]","[""Binary""]",student_of_caste_category,Caste,Student,"[""Student""]",1,[],[],[],False,False,False
+"[""Student""]","[""Binary""]",student_has_domicile,State/Union Territory of Domicile,Student,"[""Student""]",1,[],[],[],False,False,False
+"[""Student""]","[""Binary""]",selected_course,Enrolled in Course(s),Student(s),"[""Student""]",1,[],[],[],False,False,False
+"[""Voluntary Teacher""]","[""Binary""]",trainer_of_course,Volunteer to teach Course,Volunteered by,"[""Voluntary Teacher""]",1,[],[],[],False,False,False
+"[""Voluntary Teacher""]","[""Binary""]",trainer_of_college,Volunteer to teach College,Volunteered by,"[""Voluntary Teacher""]",1,[],[],[],False,False,False
+"[""Voluntary Teacher""]","[""Triadic""]",trainer_teaches_course_in_college,Volunteer to teach Course in College,Volunteered by,"[""Voluntary Teacher""]",1,[],[],[],False,False,False
+"[""Master Trainer""]","[""Binary""]",master_trainer_of_course,Volunteer to teach Course(s) [At max. 2],Master Trainer,"[""Master Trainer""]",1,[],[],[],False,False,False
+"[""Master Trainer""]","[""Binary""]",master_trainer_of_university,University,Master Trainer,"[""Master Trainer""]",1,[],[],[],False,False,False
+"[""Course Developer""]","[""Binary""]",developer_of_course,Volunteer to develop Course,Developed by,"[""Course Developer""]",1,[],[],[],False,False,False
+"[""District""]","[""Binary""]",district_of,State,District(s),"[""District""]",1,[],[],[],False,False,False
+"[""College""]","[""Binary""]",has_group,Group,Group for,"[""College""]",1,[],[],[],False,False,False
+"[""Person""]","[""Binary""]",has_login,Login link,Login for,"[""Person""]",1,[],[],[],False,False,False
+"[""Group""]","[""Binary""]",group_has_batch,Group,Batch,"[""Group""]",1,[],[],[],False,False,False
+"[""Batch""]","[""Binary""]",has_batch_member,Batch,Member(s),"[""Batch""]",1,[],[],[],False,False,False
+"[""Batch""]","[""Binary""]",has_course,Batch Course,course_of,"[""Batch""]",1,[],[],[],False,False,False
+"[""StudentCourseEnrollment""]","[""Binary""]",for_acourse,Course,Enrollment,"[""StudentCourseEnrollment""]",1,[],[],[],False,False,False
+"[""StudentCourseEnrollment""]","[""Binary""]",for_college,College,Enrollment,"[""StudentCourseEnrollment""]",1,[],[],[],False,False,False
+"[""StudentCourseEnrollment""]","[""Binary""]",for_university,University,Enrollment,"[""StudentCourseEnrollment""]",1,[],[],[],False,False,False
+"[""StudentCourseEnrollment"",""Page"",""File""]","[""Binary""]",has_current_approval_task,Approval Task,Enrollment,"[""StudentCourseEnrollment"",""Page"",""File""]",1,[],[],[],False,False,False
+"[""Event""]","[""Binary""]",event_has_batch,Batch,Event,"[""Event""]",1,[],[],[],False,False,False
+"[""CourseEventGroup""]","[""Binary""]",group_has_course_event,CourseEventGroup,Course,"[""CourseEventGroup""]",1,[],[],[],False,False,False
+"[""Course"",""BaseCourseGroup"",""Group"",""ProgramEventGroup"",""PartnerGroup""]","[""Binary""]",has_logo,Course,File,"[""Course"",""BaseCourseGroup"",""Group"",""ProgramEventGroup"",""PartnerGroup""]",1,[],[],[],False,False,False
+"[""QuizItemEvent"",""Page"",""File""]","[""Binary""]",clone_of,QuizItemEvent,QuizItem,"[""QuizItemEvent"",""Page"",""File""]",1,[],[],[],False,False,False
+"[""QuizItem"",""QuizItemEvent"",""Page"",""File"",""Forum"",""Jsmol"", ""TurtleBlocks"", ""PoliceSquad"", ""OpenStoryTool"", ""BioMechanics"", ""Asset""]","[""Binary""]",has_thread,QuizItemEvent,Twist,"[""QuizItem"",""QuizItemEvent"",""Page"",""File"",""Forum"",""Jsmol"", ""TurtleBlocks"", ""PoliceSquad"", ""OpenStoryTool"", ""BioMechanics"", ""Asset""]",1,[],[],[],False,False,False
+"[""Asset""]","[""Binary""]",has_assetcontent,AssetContent,assetcontent_of,"[""Asset""]",1,[],"[""any"",""most"",""some"",""none"",""atmost""]",[],False,False,False
+"[""File""]","[""Binary""]",has_subtitle,File,File,"[""File""]",1,[],"[""alt_language""]",[],False,False,False
+"[""File""]","[""Binary""]",has_transcript,File,File,"[""File""]",1,[],[],[],False,False,False
+"[""Page"",""File""]","[""Binary""]",has_alt_content,File,File,"[""Page"",""File""]",1,[],"[""alt_size"",""alt_format"",""alt_language""]","[""any"",""most"",""some"",""none"",""atmost""]",False,False,False
+"[""module"",""oer"",""tutorial"",""interactive"",""collection""]","[""Binary""]",translation_of,Translation,File,"[""module"",""oer"",""tutorial"",""interactive"",""collection""]",1,[],[],[],False,False,False
+"[""Author""]","[""Binary""]",has_profile_pic,Profile pic,File,"[""Author""]",1,[],[],[],False,False,False
+"[""module"",""oer"",""tutorial"",""interactive"",""collection""]","[""Binary""]",has_banner_pic,Banner pic,File,"[""module"",""oer"",""tutorial"",""interactive"",""collection""]",1,[],[],[],False,False,False
+"[""module"",""oer"",""tutorial"",""interactive"",""collection""]","[""Binary""]",has_thread,Thread of node,Page,"[""module"",""oer"",""tutorial"",""interactive"",""collection""]",1,[],[],[],False,False,False
+"[""module"",""oer"",""tutorial"",""interactive"",""collection""]","[""Binary""]",is_help_material,Help Material,File,"[""module"",""oer"",""tutorial"",""interactive"",""collection""]",1,[],[],[],False,False,False
+"[""module"",""oer"",""tutorial"",""interactive"",""collection""]","[""Binary""]",is_offline_package,Offline pckg,File,"[""module"",""oer"",""tutorial"",""interactive"",""collection""]",1,[],[],[],False,False,False
+"[""module"",""oer"",""tutorial"",""interactive"",""collection"",""Event"",""Notification""]","[""Binary""]",has_thumbnail,Thumbnail of,File,"[""module"",""oer"",""tutorial"",""interactive"",""collection"",""Event"",""Notification""]",1,[],[],[],False,False,False
