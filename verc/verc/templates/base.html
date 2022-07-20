@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- open graph -->
+    <meta property="og:url"                content="https://www.techneconhealthcare.com" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="Tiss Healthcare" />
+    <meta property="og:description"        content="Vrachna Desc" />
+    <meta property="og:image"              content="https://www.techneconhealthcare.com/images/technecon_v_640.jpg" />
+    
+    <link rel="icon" href="static/images/fav.png">
+    <title> Vrachana -{% block title %}{% endblock title %}</title>
+    
+    
+    <!-- Bootstrap CSS -->
+    {% comment %} <link rel="stylesheet" href="static/css/bootstrap.min.css"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://kit.fontawesome.com/af742371b0.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+
+    <link rel='stylesheet' href='/static/plugins/easyAutocomplete/easy-autocomplete.css'>
+   
+    <!-- custom CSS -->
+    
+    <link rel="stylesheet" href="{% static 'css/cstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/developers.css' %}">
+    {% comment %} <link rel="stylesheet" href="static/css/cstyle.css">
+    <link rel="stylesheet" href="static/css/developers.css"> {% endcomment %}
+    
+    <!-- developer css if needed -->
+    <style>
+     
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1055;
+        background: #121211b8;
+        display: none;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        outline: 0;
+    }
+    </style>
+  </head>
+  <body>
+    
+    {% include 'navbar.html' %}
+      
+      {% block body %}
+
+    {% endblock body %}
+    {% include 'footer.html' %}
+    {% include 'login.html' %}
+   
+      
+   
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <!-- <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script> -->
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+    <script src="{% static 'js/moment.js' %}"></script>
+    <script type='application/javascript' src="{% static 'js/fastclick.js' %}"></script>
+    <script src="{% static 'js/jquery.matchHeight.js' %}"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="static/plugins/easyAutocomplete/jquery.easy-autocomplete.js"></script>
+
+    <script src="{% static 'js/cscript.js' %}"></script>
+    <script src="{% static 'js/pages/_partials/dropdown_notificaitons.js' %}"></script>
+    <script src="{% static 'js/pages/_partials/bookmark.js' %}"></script>
+    <script src="{% static 'js/pages/home.js' %}"></script>
+    <script src="{% static 'js/pages/homepage-login.js' %}"></script>
+    <script src="{% static 'js/pages/register-validation.js' %}"></script>
+    <script src="{% static 'js/pages/_partials/sticky_table_menu.js' %}"></script>
+    <script src="{% static 'js/pages/_partials/filter_view_layouts.js' %}"></script>
+    <script src="{% static 'js/pages/_partials/filter_tree.js' %}"></script>
+    <script src="{% static 'js/pages/_partials/sliding-sidebar.js' %}"></script>
+    
+
+    <script>
+      $(document).ready(function(){
+     
+      var options = {
+        url: "/assets/json/countries.json",
+
+        getValue: "name",
+
+        list: {
+          match: {
+            enabled: true
+          }
+        }
+      };
+      $("#searchField").easyAutocomplete(options);
+     
+
+      
+      $('#staticBackdrop_onPageLoad_model').modal('show');
+      
+      });
+    </script>
+     
+    
+    
+  </body>
+</html>
