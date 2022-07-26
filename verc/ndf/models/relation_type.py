@@ -56,13 +56,13 @@ class RelationType(Node):
           'subject_or_right_subject_list': List of Value(s) of
           GRelation node's subject field } }
         """
-        if isinstance(rel_type_node, (unicode, ObjectId)):
+        if isinstance(rel_type_node, (str, ObjectId)):
             # Convert unicode representation of ObjectId into it's
             # corresponding ObjectId type Then fetch
             # attribute-type-node from AttributeType collection of
             # respective ObjectId
             if ObjectId.is_valid(rel_type_node):
-                rel_type_node = node_collection.one({'_type': 'RelationType', '_id': ObjectId(rel_type_node)})
+                rel_type_node = node_collection.find_one({'_cls': 'RelationType', '_id': ObjectId(rel_type_node)})
             else:
                 print("\n Invalid ObjectId: ", rel_type_node, " is not a valid ObjectId!!!\n")
                 # Throw indicating the same
@@ -72,7 +72,7 @@ class RelationType(Node):
         if left_or_right_subject:
             if META_TYPE[3] in rel_type_node.member_of_names_list:
                 # If Binary relationship found
-                left_or_right_subject_node = node_collection.one({
+                left_or_right_subject_node = node_collection.find_one({
                     '_id': left_or_right_subject
                 })
             else:

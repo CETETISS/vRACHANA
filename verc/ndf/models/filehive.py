@@ -2,14 +2,12 @@ from .base_imports import *
 #from .history_manager import HistoryManager
 
 #@connection.register
-class Filehive(Document):
+class Filehive(DynamicDocument):
     """
     Filehive class to hold any resource in file system.
     """
 
-    objects = models.Manager()
-    collection_name = 'Filehives'
-    _type=StringField()
+    #objects = models.Manager()
     md5=StringField(Required = True)
     relurl=StringField()
     mime_type=StringField(Required = True)             # Holds the type of file                                                                                       
@@ -20,16 +18,16 @@ class Filehive(Document):
     uploaded_at=DateTimeField(default = datetime.datetime.now)
     if_image_size_name=StringField()
     if_image_dimensions=StringField()
-    meta = { 'collection' : 'filehives',
+   
+    meta = { 
+       'collection' : 'filehives',
        'indexes' : [
             {
              # 12: Single index                                                                                                                                        
                 'fields' : ['mime_type'],
            }
         ]
-     }
-    use_dot_notation = True
-
+        }
 
     def __unicode__(self):
         return self._id
@@ -114,7 +112,7 @@ class Filehive(Document):
             print("relurl",filehive_obj.relurl)
             filehive_obj.mime_type           = str(file_metadata_dict['file_mime_type'])
             filehive_obj.length              = float(file_metadata_dict['file_size'])
-            filehive_obj.filename            = unicode(file_metadata_dict['file_name'])
+            filehive_obj.filename            = str(file_metadata_dict['file_name'])
             filehive_obj.first_uploader      = int(first_uploader)
             filehive_obj.first_parent        = ObjectId(first_parent)
             filehive_obj.if_image_size_name  = str(if_image_size_name)
@@ -292,12 +290,12 @@ class Filehive(Document):
         try:
 
             files.seek(0)
-            mid_size_img = StringIO()
+            mid_size_img = io.StringIO()
             size = file_size if file_size else (500, 300)
             file_name = file_name if file_name else files.name if hasattr(files, 'name') else ''
 
             try:
-                img = Image.open(StringIO(files.read()))
+                img = Image.open(io.StringIO(files.read()))
             except Exception as e:
                 print("Exception in opening file with PIL.Image.Open(): ", e)
                 return None, None
@@ -347,7 +345,7 @@ class Filehive(Document):
             self.uploaded_at = datetime.datetime.now()
 
         super(Filehive, self).save(*args, **kwargs)
-
+        '''
         # storing Filehive JSON in RSC system:
         history_manager = HistoryManager()
         rcs_obj = RCS()
@@ -389,7 +387,7 @@ class Filehive(Document):
                 raise RuntimeError(err)
 
         # --- END of storing Filehive JSON in RSC system ---
-
+        '''
           ########################## ES ##################################
        #if GSTUDIO_ELASTIC_SEARCH_IN_NODE_CLASS == True:
        #print "inside elastic search save"

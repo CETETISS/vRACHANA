@@ -5,6 +5,8 @@ from ndf.gstudio_es.es import *
 # from gnowsys_ndf.ndf.views.es_queries import save_to_es
 from verc.settings import GSTUDIO_ELASTIC_SEARCH,GSTUDIO_ELASTIC_SEARCH_IN_NODE_CLASS,GSTUDIO_SITE_NAME
 #from gnowsys_ndf.ndf.models.models_utils import NodeJSONEncoder,CustomNodeJSONEncoder
+# DATABASE Variables
+node_collection = db['nodes']
 
 #@connection.register
 #print("db:",db['Nodes'])
@@ -102,9 +104,7 @@ class Node(DynamicDocument):
     under_project = StringField(default = u'')
     funded_by = StringField(default = u'')
 
-    # DATABASE Variables
-    #node_collection = db['nodes']
-
+    
     # Custom functions for the Node class
 
     def add_in_group_set(self, group_id):

@@ -5,7 +5,6 @@ def _val_agency_type(val):
         if val not in GSTUDIO_AUTHOR_AGENCY_TYPES:                                                                                                                     
                 raise ValidationError('agency_type values should be one of predefined')   
 
-#@connection.register
 class Author(Group):
     """Author class to store django user instances
     """
@@ -37,7 +36,7 @@ class Author(Group):
     def password_crypt(self, password):
         password_salt = str(len(password))
         crypt = hashlib.sha1(password[::-1].upper() + password_salt).hexdigest()
-        PASSWORD = unicode(crypt, 'utf-8')
+        PASSWORD = str(crypt, 'utf-8')
         return PASSWORD
 
     def is_anonymous(self):
@@ -48,18 +47,18 @@ class Author(Group):
 
     @staticmethod
     def get_author_by_userid(user_id):
-        return node_collection.one({'_type': 'Author', 'created_by': user_id})
+        return node_collection.find_one({'_cls': 'GSystem.Author', 'submitted_by': user_id})
 
     @staticmethod
     def get_user_id_list_from_author_oid_list(author_oids_list=[]):
         all_authors_cur = node_collection.find({'_id': {'$in': [ObjectId(a) for a in author_oids_list]} },
-                                                {'_id': 0, 'created_by': 1} )
-        return [user['created_by'] for user in all_authors_cur]
+                                                {'_id': 0, 'submitted_by': 1} )
+        return [user['submitted_by'] for user in all_authors_cur]
 
     @staticmethod
     def get_author_obj_from_name_or_id(username_or_userid_or_authid):
         try:
-            return node_collection.one({'_type': u'Author', 'created_by': int(username_or_userid_or_authid)})
+            return node_collection.find_one({'_cls': u'GSystem.Author', 'submitted_by': int(username_or_userid_or_authid)})
         except Exception as e:
             return Group.get_group_name_id(username_or_userid_or_authid, get_obj=True)
 
@@ -94,8 +93,8 @@ class Author(Group):
     @staticmethod
     def get_author_oid_list_from_user_id_list(user_ids_list=[], list_of_str_oids=False):
         all_authors_cur = node_collection.find({
-                                            '_type': 'Author',
-                                            'created_by': {'$in': [int(uid) for uid in user_ids_list]}
+                                            '_cls': 'GSystem.Author',
+                                            'submitted_by': {'$in': [int(uid) for uid in user_ids_list]}
                                         }, {'_id': 1})
         if list_of_str_oids:
             return [str(user['_id']) for user in all_authors_cur]
@@ -106,8 +105,8 @@ class Author(Group):
     @staticmethod
     def get_author_usernames_list_from_user_id_list(user_ids_list=[]):
         all_authors_cur = node_collection.find({
-                                            '_type': 'Author',
-                                            'created_by': {'$in': [int(uid) for uid in user_ids_list]}
+                                            '_cls': 'GSystem.Author',
+                                            'submitted_by': {'$in': [int(uid) for uid in user_ids_list]}
                                         }, {'name': 1})
 
         result_list = auth_result_list = [user['name'] for user in all_authors_cur]
@@ -140,25 +139,25 @@ class Author(Group):
         if not user_obj:
             raise Exception("\nUser with provided user-id/user-obj does NOT exists!!")
 
-        auth = node_collection.find_one({'_type': u'Author', 'created_by': int(user_obj.id)})
+        auth = node_collection.find_one({'_cls': u'GSystem.Author', 'submitted_by': int(user_obj.id)})
 
         if auth:
             return auth
 
-        auth_gst = node_collection.one({'_type': u'GSystemType', 'name': u'Author'})
+        auth_gst = node_collection.one({'_cls': u'GSystemType', 'name': u'Author'})
 
         print("\n Creating new Author obj for user id (django): ", user_obj.id)
-        auth = node_collection.collection.Author()
-        auth.name = unicode(user_obj.username)
-        auth.email = unicode(user_obj.email)
+        auth = Author()
+        auth.name = str(user_obj.username)
+        auth.email = str(user_obj.email)
         auth.password = u""
         auth.member_of.append(auth_gst._id)
         auth.group_type = u"PUBLIC"
         auth.edit_policy = u"NON_EDITABLE"
-        auth.subscription_policy = u"OPEN"
-        auth.created_by = user_obj.id
+        #auth.subscription_policy = u"OPEN"
+        auth.submitted_by = user_obj.id
         auth.modified_by = user_obj.id
-        auth.contributors.append(user_obj.id)
+        auth.authors.append(user_obj.id)
         auth.group_admin.append(user_obj.id)
         auth.preferred_languages = {'primary': ('en', 'English')}
 
@@ -166,24 +165,24 @@ class Author(Group):
         auth_id = ObjectId()
         auth['_id'] = auth_id
         auth.save(groupid=auth_id)
-
-        home_group_obj = node_collection.one({'_type': u"Group", 'name': unicode("home")})
+        '''
+        home_group_obj = node_collection.find_one({'_cls': u"GSystem.Group", 'name': str("home")})
         if user_obj.id not in home_group_obj.author_set:
-            node_collection.collection.update({'_id': home_group_obj._id}, {'$push': {'author_set': user_obj.id }}, upsert=False, multi=False)
+            node_collection.update({'_id': home_group_obj._id}, {'$push': {'author_set': user_obj.id }}, upsert=False, multi=False)
             home_group_obj.reload()
-
+        
         desk_group_obj = node_collection.one({'_type': u"Group", 'name': unicode("desk")})
         if desk_group_obj and user_obj.id not in desk_group_obj.author_set:
             node_collection.collection.update({'_id': desk_group_obj._id}, {'$push': {'author_set': user_obj.id }}, upsert=False, multi=False)
             desk_group_obj.reload()
-
+        '''
         return auth
 
 
     @staticmethod
     def get_total_comments_by_user(user_id, return_cur=False, site_wide=False, group_id=None):
 
-        reply_gst = node_collection.one({'_type': "GSystemType", 'name': "Reply"}, {'_id': 1})
+        reply_gst = node_collection.find_one({'_type': "GSystemType", 'name': "Reply"}, {'_id': 1})
 
         comments_query = {'member_of': reply_gst._id,'created_by': user_id}
 

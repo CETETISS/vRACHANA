@@ -1,10 +1,7 @@
 
 from .base_imports import *
-from .node import Node
-from .filehive import filehive_collection
-
-
-#@connection.register
+from .node import Node, node_collection
+from .filehive import Filehive, filehive_collection
 
 class imglink(EmbeddedDocument):
     id=ObjectIdField(),
@@ -68,12 +65,12 @@ class GSystem(Node):
 
         if "_id" not in self and uploaded_file:
 
-            fh_obj = filehive_collection.collection.Filehive()
+            fh_obj = Filehive()
             existing_fh_obj = fh_obj.check_if_file_exists(uploaded_file)
 
             if existing_fh_obj:
                 existing_file_gs = node_collection.find_one({
-                                    '_type': 'GSystem',
+                                    '_cls': 'GSystem',
                                     'if_file.original.id': existing_fh_obj._id
                                 })
             print(kwargs)
@@ -117,7 +114,7 @@ class GSystem(Node):
             self['if_file'] = existing_file_gs_if_file
 
         elif uploaded_file and not existing_file_gs:
-            original_filehive_obj   = filehive_collection.collection.Filehive()
+            original_filehive_obj   = Filehive()
             original_file           = uploaded_file
 
             file_name = original_filehive_obj.get_file_name(original_file)
@@ -158,7 +155,7 @@ class GSystem(Node):
                                                     + '-' \
                                                     + original_filehive_obj.filename
 
-                        each_image_size_filehive_obj = filehive_collection.collection.Filehive()
+                        each_image_size_filehive_obj = Filehive()
                         each_image_size_file, dimension = each_image_size_filehive_obj.convert_image_to_size(files=original_file,
                                                   file_name=each_image_size_filename,
                                                   file_extension=original_file_extension,
@@ -233,7 +230,7 @@ class GSystem(Node):
         gst_name, gst_id = GSystemType.get_gst_name_id(member_of_name)
         if if_gstaff:
             query = {
-                    '_type': 'GSystem',
+                    '_cls': 'GSystem',
                     'status': 'PUBLISHED',
                     'group_set': {'$in': [group_id]},
                     'member_of': {'$in': [gst_id]},
@@ -249,10 +246,10 @@ class GSystem(Node):
                             {'access_policy': {'$in': [u'Public', u'PUBLIC']}},
                             {'$and': [
                                 {'access_policy': u"PRIVATE"},
-                                {'created_by': user_id}
+                                {'submitted_by': user_id}
                                 ]
                             },
-                            {'created_by': user_id}
+                            {'submitted_by': user_id}
                         ]
                     }
         for each in kwargs:

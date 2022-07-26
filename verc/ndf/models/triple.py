@@ -36,7 +36,7 @@ class Triple(DynamicDocument):
             triple_node_mapping_dict[get_model_name(cls) ])
         status = [status] if status else ['PUBLISHED', 'DELETED']
         return triple_collection.find({
-                                    '_type': get_model_name(cls),
+                                    '_cls': get_model_name(cls),
                                     'subject': ObjectId(subject_id),
                                     triple_class_field_mapping_dict[get_model_name(cls)]: gr_or_rt_id,
                                     'status': {'$in': status}
@@ -73,7 +73,7 @@ class Triple(DynamicDocument):
         status = [status] if status else ['PUBLISHED', 'DELETED']
 
         tr_cur = triple_collection.find({
-                                    '_type': get_model_name(cls),
+                                    '_cls': get_model_name(cls),
                                     'subject': ObjectId(subject_id),
                                     triple_class_field_mapping_dict[get_model_name(cls)]: {'$in': gt_or_rt_id_name_dict.keys()},
                                     'status': {'$in': status}
@@ -103,7 +103,7 @@ class Triple(DynamicDocument):
     subject_system_flag = False
 
     subject_id = self.subject
-    subject_document = node_collection.one({"_id": self.subject})
+    subject_document = node_collection.find_one({"_id": self.subject})
     if not subject_document:
         return
     subject_name = subject_document.name
@@ -117,7 +117,7 @@ class Triple(DynamicDocument):
       # self.attribute_type = kwargs['triple_node']
       at_node = node_collection.one({'_id': ObjectId(self.attribute_type)})
       attribute_type_name = at_node.name
-      attribute_object_value = unicode(self.object_value)
+      attribute_object_value = str(self.object_value)
       attribute_object_value_for_name = attribute_object_value[:20]
       self.name = "%(subject_name)s -- %(attribute_type_name)s -- %(attribute_object_value_for_name)s" % locals()
       name_value = self.name
@@ -134,7 +134,7 @@ class Triple(DynamicDocument):
         # If instersection is not found with member_of fields' ObjectIds,
         # then check for type_of field of each one of the member_of node
         for gst_id in subject_member_of_list:
-          gst_node = node_collection.one({'_id': gst_id}, {'type_of': 1})
+          gst_node = node_collection.find_one({'_id': gst_id})
           if set(gst_node.type_of) & set(subject_type_list):
             subject_system_flag = True
             break
@@ -161,7 +161,7 @@ class Triple(DynamicDocument):
         print(self.right_subject,"%%%%%%%%%%%%%",type(self.right_subject))
         for each in self.right_subject:
           # Here each is an ObjectId
-          right_subject_document = node_collection.one({
+          right_subject_document = node_collection.find_one({
             "_id": each
           }, {
             "name": 1, "member_of": 1
@@ -206,7 +206,7 @@ class Triple(DynamicDocument):
           left_subject_system_flag = True
         else:
           for gst_id in left_subject_member_of_list:
-            gst_node = node_collection.one({'_id': gst_id}, {'type_of': 1})
+            gst_node = node_collection.one({'_id': gst_id})
             if set(gst_node.type_of) & set(subject_type_list):
               left_subject_system_flag = True
               break
@@ -218,7 +218,7 @@ class Triple(DynamicDocument):
 
         else:
           for gst_id in right_subject_member_of_list:
-            gst_node = node_collection.one({'_id': gst_id}, {'type_of': 1})
+            gst_node = node_collection.one({'_id': gst_id})
             if set(gst_node.type_of) & set(object_type_list):
               right_subject_system_flag = True
               break
@@ -237,7 +237,7 @@ class Triple(DynamicDocument):
       error_message = "\n "+name_value+ " -- subject_type_list ("+str(subject_type_list)+") -- subject_member_of_list ("+str(subject_member_of_list)+") \n"
       raise Exception(error_message + "Cannot create the GAttribute ("+name_value+") as the subject that you have mentioned is not a member of a GSystemType which this AttributeType is defined")
 
-    #it's me
+    #it's me, {'type_of': 1}
     #check for data_type in GAttribute case. Object value of the GAttribute must have the same type as that of the type specified in AttributeType
     """if self._type == "GAttribute": data_type_in_attribute_type =
     self.attribute_type['data_type'] data_type_of_object_value =
@@ -252,7 +252,7 @@ class Triple(DynamicDocument):
     #end of data_type_check
 
     super(Triple, self).save(*args, **kwargs)
-
+    '''
     history_manager = HistoryManager()
     rcs_obj = RCS()
     if is_new:
@@ -288,6 +288,6 @@ class Triple(DynamicDocument):
       except Exception as err:
           print("\n DocumentError: This document (", self._id, ":", self.name, ") can't be updated!!!\n")
           raise RuntimeError(err)
-
+    '''
 
 triple_collection   = db["Triples"].Triple

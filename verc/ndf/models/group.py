@@ -10,21 +10,9 @@ def _val_edt_plcy(val):
      if val not in EDIT_POLICY:                                                                                                                               
           raise ValidationError('edit_policy should be one of the predefined values')
 
-def _val_sub_plcy(val):
-     if val not in SUBSCRIPTION_POLICY:                                                                                                                               
-          raise ValidationError('subscriptn policy should be one of the predefined values')
-
 def _val_vsb_plcy(val):
      if val not in EXISTANCE_POLICY:                                                                                                                               
           raise ValidationError('existance policy should be one of the predefined values')
-
-def _val_disc_plcy(val):
-     if val not in LIST_MEMBER_POLICY:                                                                                                                               
-          raise ValidationError('disclosure policy should be one of the predefined values')
-
-def _val_encrpt_plcy(val):
-     if val not in  ENCRYPTION_POLICY:                                                                                                                               
-          raise ValidationError('encrptn policy should be one of the predefined values')
 
 def _val_agncy_plcy(val):
      if val not in GSTUDIO_GROUP_AGENCY_TYPES:                                                                                                                         
@@ -286,12 +274,12 @@ class Group(GSystem):
         if not proceed:
             print ("\nDo you want to purge group and all unique nodes(belongs to this group only) under it?")
             print ('Enter Y/y to proceed else N/n to reject group deletion:')
-            to_proceed = raw_input()
+            to_proceed = input()
             proceed = True if (to_proceed in ['y', 'Y']) else False
 
         if proceed:
             print ("\nProceeding further for purging of group and unique resources/nodes under it...")
-            from gnowsys_ndf.ndf.views.methods import delete_node
+            from ndf.views.methods import delete_node
 
             grp_res = node_collection.find({ '$and': [ {'group_set':{'$size':1}}, {'group_set': {'$all': [ObjectId(group_id)]}} ] })
             print ("\n Total (unique) resources to be purge: ", grp_res.count())

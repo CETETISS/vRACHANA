@@ -3,8 +3,9 @@ import os
 import hashlib
 import datetime
 import json
-#import magic
+import magic
 import mimetypes
+import io
 
 from itertools import chain     # Using from_iterable()
 from hashfs import HashFS       # content-addressable file management system
@@ -27,6 +28,7 @@ from django.core.cache import cache
 #from django_mongokit import get_database
 #from django_mongokit.document import DjangoDocument
 from django.core.files.images import get_image_dimensions
+from django.core.exceptions import ValidationError
 
 #from mongoengine import connection
 #from mongoengine import document
@@ -34,8 +36,9 @@ from django.core.files.images import get_image_dimensions
 from mongoengine import *
 
 import pymongo
+
 #MONGODB_HOST = 'mongodb://127.0.0.1:27017'
-#con = connect(db='gstudio-mongodb', host=MONGODB_HOST)
+#con = connect(db='verc_db', host=MONGODB_HOST)
 
 #from mongokit import IS, OR
 #from mongokit import INDEX_ASCENDING, INDEX_DESCENDING

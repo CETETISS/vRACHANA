@@ -61,7 +61,7 @@ class AttributeType(Node):
             # attribute-type-node from AttributeType collection of
             # respective ObjectId
             if ObjectId.is_valid(attr_id_or_node):
-                attr_id_or_node = node_collection.find_one({'_type': 'AttributeType', '_id': ObjectId(attr_id_or_node)})
+                attr_id_or_node = node_collection.find_one({'_cls': 'AttributeType', '_id': ObjectId(attr_id_or_node)})
             else:
                 print("\n Invalid ObjectId: ", attr_id_or_node, " is not a valid ObjectId!!!\n")
                 # Throw indicating the same

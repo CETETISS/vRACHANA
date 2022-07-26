@@ -64,7 +64,7 @@ topic_GST = node_collection.one({'_cls': 'GSystemType', 'name': 'Topic'})
 grp_st = node_collection.one({'$and': [{'_cls': 'GSystemType'}, {'name': 'Group'}]})
 ins_objectid = ObjectId()
 #player_disc_enable_at_name, player_disc_enable_at_id = Node.get_name_id_from_type('player_discussion_enable', 'AttributeType')
-'''
+
 # C O M M O N   M E T H O D S   D E F I N E D   F O R   V I E W S
 
 def staff_required(func):
@@ -79,7 +79,6 @@ def staff_required(func):
                 return func(*args, **kwargs)
             raise PermissionDenied
     return wrapper
-
 '''
 def get_execution_time(f):
     def wrap(*args,**kwargs):
@@ -189,7 +188,7 @@ def get_group_name_id(group_name_or_id, get_obj=False):
 
     # case-2: argument - "group_name_or_id" is group name
     else:
-        group_obj = node_collection.one(
+        group_obj = node_collection.find_one(
             {"_cls": {"$in": ["Group", "Author"]}, "name": str(group_name_or_id)})
 
         # checking if group_obj is valid
@@ -356,7 +355,7 @@ def create_task_for_activity(request,group_id,activity_dict,get_assignee_list,se
 '''
 
 def get_all_subscribed_users(group_id):
-  grp=node_collection.one({'_id':ObjectId(group_id)})
+  grp=node_collection.find_one({'_id':ObjectId(group_id)})
   ins_objectid  = ObjectId()
   all_users=[]
   if ins_objectid.is_valid(group_id) :
@@ -373,7 +372,7 @@ def get_all_admins(group_id):
 
 def check_if_moderated_group(group_id):
   grp=node_collection.find_one({'_id':ObjectId(group_id)})
-  ins_objectid  = ObjectId()
+  #ins_objectid  = ObjectId()
   # print "edtpol",grp.edit_policy
   if ins_objectid.is_valid(group_id) :
     if grp.edit_policy == "EDITABLE_MODERATED":
@@ -386,116 +385,20 @@ def check_if_moderated_group(group_id):
 
 def check_delete(main):
     try:
-
         def check(*args, **kwargs):
             relns = ""
             node_id = kwargs['node_id']
-            ins_objectid = ObjectId()
+            #ins_objectid = ObjectId()
             if ins_objectid.is_valid(node_id):
                 node = node_collection.find_one({'_id': ObjectId(node_id)})
-                relns = node.get_possible_relations(node.member_of)
-                attrbts = node.get_possible_attributes(node.member_of)
+                relns = Node.get_possible_relations(node.member_of)
+                attrbts = Node.get_possible_attributes(node.member_of)
                 return main(*args, **kwargs)
             else:
                 print("Not a valid id")
         return check
     except Exception as e:
         print("Error in check_delete " + str(e))
-
-
-def get_gapps(default_gapp_listing=False, already_selected_gapps=[]):
-    """Returns list of GApps.
-
-    Arguments:
-    default_gapp_listing -- (Optional argument)
-        - This is to decide which list should be considered for listing GAPPs;
-        that is, in menu-bar and GAPPs selection menu for a given group
-        - True: DEFAULT_GAPPS (menu-bar)
-            - At present used in listing GAPPS whenever a new group is created
-        - False: GSTUDIO_WORKING_GAPPS (selection-menu)
-            - At present used in listing GAPPS for setting-up GAPPS for a group
-
-    already_selected_gapps -- (Optional argument)
-        - List of GApps already set for a given group in form of
-        dictionary variable
-        - If specified, then these listed GApps are excluded from
-        the list of GApps returned by this function
-
-    Returns:
-        - List of GApps where each GApp is in form of node/dictionary
-    """
-    gapps_list = []
-
-    global GSTUDIO_DEFAULT_GAPPS_LIST
-    gapps_list = GSTUDIO_DEFAULT_GAPPS_LIST
-
-    if not gapps_list or not default_gapp_listing:
-                # If GSTUDIO_DEFAULT_GAPPS_LIST not set (i.e. empty)
-                # Or we need to setup list for selection purpose of GAPPS
-                # for a group
-        gapps_list = GSTUDIO_WORKING_GAPPS
-
-        # If already_selected_gapps is non-empty,
-        # Then append their names in list of GApps to be excluded
-        if already_selected_gapps:
-            gapps_list_remove = gapps_list.remove
-            #Function used by Processes implemented below
-            def multi_(lst):
-              for each_gapp in lst:
-                gapp_name = each_gapp["name"]
-
-                if gapp_name in gapps_list:
-                    gapps_list_remove(gapp_name)
-            #this empty list will have the Process objects as its elements
-            processes=[]
-            n1=len(already_selected_gapps)
-            lst1=already_selected_gapps
-            #returns no of cores in the cpu
-            x=mp.cpu_count()
-            #divides the list into those many parts
-            n2=n1/x
-            #Process object is created.The list after being partioned is also given as an argument.
-            for i in range(x):
-              processes.append(mp.Process(target=multi_,args=(lst1[i*n2:(i+1)*n2],)))
-            for i in range(x):
-              processes[i].start() #each Process started
-            for i in range(x):
-              processes[i].join() #each Process converges
-    # Find all GAPPs
-    meta_type = node_collection.find_one({
-        "_cls": "MetaType", "name": META_TYPE[0]
-    })
-    gapps_cur = None
-    gapps_cur = node_collection.find_one({
-        "_cls": "GSystemType", "member_of": meta_type._id,
-        "name": {"$in": gapps_list}
-    }).sort("created_at")
-
-    return list(gapps_cur)
-
-
-def forum_notification_status(group_id, user_id):
-    """Checks forum notification turn off for an author object
-    """
-    try:
-        grp_obj = node_collection.find_one({'_id': ObjectId(group_id)})
-        auth_obj = node_collection.find_one({'_id': ObjectId(user_id)})
-        at_user_pref = node_collection.find_one(
-            {'$and': [{'_type': 'AttributeType'}, {'name': 'user_preference_off'}]})
-        list_at_pref = []
-        if at_user_pref:
-            poss_attrs = auth_obj.get_possible_attributes(at_user_pref._id)
-            if poss_attrs:
-                if 'user_preference_off' in poss_attrs:
-                    list_at_pref = poss_attrs[
-                        'user_preference_off']['object_value']
-                if grp_obj in list_at_pref:
-                    return False
-                else:
-                    return True
-        return True
-    except Exception as e:
-        print("Exception in forum notification status check " + str(e))
 
 def check_existing_group(group_name):
     if type(group_name) == 'str':
@@ -536,7 +439,6 @@ def get_resource_type(request, node_id):
     get_type = get_resource_type._cls
     return get_type
 
-'''
 def get_node_metadata(request, node, **kwargs):
     '''
     Getting list of updated GSystems with kwargs arguments.
@@ -556,13 +458,9 @@ def get_node_metadata(request, node, **kwargs):
         updated_ga_nodes = []
 
     if('_id' in node):
-
         for atname in attribute_type_list:
 
-            field_value = request.POST.get(atname, "")
-            # print atname,field_value
-
-            at = node_collection.one(
+            at = node_collection.find_one(
                 {"_type": "AttributeType", "name": atname})
 
             if at:
@@ -582,7 +480,6 @@ def get_node_metadata(request, node, **kwargs):
                         updated_ga_nodes.append(temp_res)
 
                 else:
-
                     create_gattribute(node._id, at, str(field_value))
 
     if "is_changed" in kwargs:
@@ -611,7 +508,7 @@ def create_grelation_list(subject_id, relation_type_name, right_subject_id_list)
 
         for relation_id in right_subject_id_list:
 
-            gr_node = triple_collection.collection.GRelation()
+            gr_node = GRelation()
             gr_node.subject = ObjectId(subject_id)
             gr_node.relation_type = relationtype._id
             gr_node.right_subject = ObjectId(relation_id)
@@ -694,7 +591,7 @@ def create_gattribute(subject_id, attribute_type_node, object_value=None, **kwar
     except Exception:
         attribute_type_node = Node.get_name_id_from_type(attribute_type_node, 'AttributeType', get_obj=True)
     print("\nattribute_type_node: ", attribute_type_node.name)
-    ga_node = triple_collection.one(
+    ga_node = triple_collection.find_one(
         {'_type': "GAttribute", 'subject': subject_id, 'attribute_type': attribute_type_node._id})
 
     '''
@@ -741,11 +638,11 @@ def create_gattribute(subject_id, attribute_type_node, object_value=None, **kwar
                     ga_node.name + ") created successfully.\n"
 
                 # Fetch corresponding document & append into it's attribute_set
-                node_collection.collection.update({'_id': subject_id},
-                                                  {'$addToSet': {
-                                                      'attribute_set': {attribute_type_node.name: object_value}}},
-                                                  upsert=False, multi=False
-                                                  )
+                #node_collection.update({'_id': subject_id},
+                #                                  {'$addToSet': {
+                #                                    'attribute_set': {attribute_type_node.name: object_value}}},
+                #                                  upsert=False, multi=False
+                #                                  )
 
             is_ga_node_changed = True
 
@@ -774,7 +671,7 @@ def create_gattribute(subject_id, attribute_type_node, object_value=None, **kwar
 
                 # Fetch corresponding document & update it's attribute_set with
                 # proper value
-                node_collection.update({'_id': subject_id, 'attribute_set.' + attribute_type_node.name: old_object_value}, {'$pull': {'attribute_set': {attribute_type_node.name: old_object_value}}}, upsert=False, multi=False)
+                #node_collection.update({'_id': subject_id, 'attribute_set.' + attribute_type_node.name: old_object_value}, {'$pull': {'attribute_set': {attribute_type_node.name: old_object_value}}}, upsert=False, multi=False)
 
             else:
                 print("inside else")
@@ -965,7 +862,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
             })
             if triple_scope_val:
                 gr_node = update_scope_of_triple(gr_node,relation_type_node, triple_scope_val, is_grel=True)
-
+            '''
             if left_subject:
                                 # Update value of grelation in existing as key-value pair value in
                                 # given node's "relation_set" field
@@ -988,14 +885,14 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
                 },
                     upsert=False, multi=False
                 )
-
+            
             right_subject = node_collection.find_one({
                 '_id': right_subject_id_or_list,
                 "relation_set." + relation_type_node_inverse_name: {"$exists": True}
             }, {
                 'relation_set': 1
             })
-
+            
             if right_subject:
                 # Update value of grelation in existing as key-value pair value in
                 # given node's "relation_set" field
@@ -1017,7 +914,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
                 },
                     upsert=False, multi=False
                 )
-
+            '''
             return gr_node
 
         def _update_deleted_to_published(gr_node, relation_type_node, relation_type_text, triple_scope_val=None):
@@ -1036,7 +933,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
             info_message = " %(relation_type_text)s: GRelation (%(gr_node_name)s) " % locals() \
                 + \
                 "status updated from 'DELETED' to 'PUBLISHED' successfully.\n"
-
+            '''
             node_collection.update({
                 "_id": subject_id, "relation_set." + relation_type_node_name: {'$exists': True}
             }, {
@@ -1052,7 +949,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
             },
                 upsert=False, multi=False
             )
-
+            '''
             return gr_node
 
 
@@ -1137,7 +1034,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
                         gr_node_list.append(n)
                         # if triple_scope_val:
                         #     n = update_scope_of_triple(n, relation_type_node, triple_scope_val, is_grel=True)
-
+                        '''
                         node_collection.update(
                             {'_id': subject_id, 'relation_set.' +
                                 relation_type_node.name: {'$exists': True}},
@@ -1153,6 +1050,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
                                 'relation_set.$.' + relation_type_node.inverse_name: subject_id}},
                             upsert=False, multi=False
                         )
+                        '''
                         n.reload()
 
                 else:
@@ -1164,7 +1062,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
 
                     info_message = " MultipleGRelation: GRelation (" + n.name + \
                         ") status updated from 'PUBLISHED' to 'DELETED' successfully.\n"
-
+                    '''           
                     node_collection.update({
                         '_id': subject_id, 'relation_set.' + relation_type_node.name: {'$exists': True}
                     }, {
@@ -1180,7 +1078,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
                     },
                         upsert=False, multi=False
                     )
-
+                    '''
             if right_subject_id_or_list:
                 # If still ObjectId list persists, it means either they are new ones'
                 # or from deleted ones'
@@ -1244,7 +1142,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
                     elif node_status == u"PUBLISHED":
                         if triple_scope_val:
                             node = update_scope_of_triple(node, relation_type_node, triple_scope_val, is_grel=True)
-
+                        '''
                         node_collection.collection.update({
                             "_id": subject_id, "relation_set." + relation_type_node_name: {'$exists': True}
                         }, {
@@ -1260,6 +1158,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
                         },
                             upsert=False, multi=False
                         )
+                        '''
                         info_message = " SingleGRelation: GRelation (%(node_name)s) already exists !\n" % locals(
                         )
 
@@ -1275,7 +1174,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
                         node.status = u"DELETED"
                         node.save()
                         # node.save(triple_node=relation_type_node, triple_id=relation_type_node._id)
-
+                        '''
                         node_collection.update({
                             '_id': subject_id, 'relation_set.' + relation_type_node_name: {'$exists': True}
                         }, {
@@ -1291,6 +1190,7 @@ def create_grelation(subject_id, relation_type_node, right_subject_id_or_list, *
                         },
                             upsert=False, multi=False
                         )
+                        '''
                         info_message = " SingleGRelation: GRelation (%(node_name)s) status " % locals() \
                             + \
                             "updated from 'PUBLISHED' to 'DELETED' successfully.\n"
@@ -1477,7 +1377,7 @@ def discussion_delete_reply(request, group_id):
             temp_reply.delete()
     return HttpResponse(json.dumps(deleted_replies))
 
-
+create_notice_type
 def get_user_group(userObject):
     '''
     methods for getting user's belongs to group.
@@ -2809,7 +2709,7 @@ def get_prior_node_hierarchy(oid):
 
     while prev_obj_id:
         try:
-            prev_obj = node_collection.one({'_id': prev_obj_id})
+            prev_obj = node_collection.find_one({'_id': prev_obj_id})
             prev_obj_id = prev_obj.prior_node[0]
             # print prev_obj.name
 
@@ -2843,8 +2743,8 @@ def get_language_tuple(lang):
     # check if lang argument itself is a complete, valid tuple that exists in all_languages.
     if (lang in all_languages) or (tuple(lang) in all_languages):
         return lang
-
-    all_languages_concanated = reduce(lambda x, y: x+y, all_languages)
+    import functools
+    all_languages_concanated = functools.reduce(lambda x, y: x+y, all_languages)
 
     # iterating over each document in the cursor:
     # - Secondly, replacing invalid language values to valid tuple from settings
@@ -2930,7 +2830,7 @@ def clone_triple(node_obj, triple_obj, group_id, user_id, override_AT_with=None,
             if override_AT_with:
                 cloned_copy['attribute_type'] = node_collection.find_one({
                     '_type': 'AttributeType', 'name': override_AT_with})._id
-        cloned_obj_id = triple_collection.collection.insert(cloned_copy)
+        cloned_obj_id = triple_collection.insert(cloned_copy)
         cloned_obj = triple_collection.find_one({'_id': ObjectId(cloned_obj_id)})
         cloned_obj.save(groupid=group_id, validate=False)
     except Exception as clone_triple_err:
@@ -2943,7 +2843,7 @@ def pull_triples(source_node, target_node, group_id, user_id):
     # since we will create a clone of triple object.
     # GAttributes
     # print "\n Pulling Triples---------"
-    node_gattr_cur = triple_collection.find({'_type': 'GAttribute', 'subject': source_node._id})
+    node_gattr_cur = triple_collection.find({'_cls': 'GAttribute', 'subject': source_node._id})
     # print "\n GA: ", node_gattr_cur.count()
     for each_gattr in node_gattr_cur:
         override_AT_with = None
@@ -2953,7 +2853,7 @@ def pull_triples(source_node, target_node, group_id, user_id):
                             group_id=group_id, user_id=user_id, override_AT_with=override_AT_with)
 
     # GRelations
-    node_grel_cur = triple_collection.find({'_type': 'GRelation', 'subject': source_node._id})
+    node_grel_cur = triple_collection.find({'_cls': 'GRelation', 'subject': source_node._id})
     # print "\n GR: ", node_grel_cur.count()
     for each_grel in node_grel_cur:
         cloned_grel = clone_triple(node_obj=target_node, triple_obj=each_grel,
@@ -2976,7 +2876,7 @@ def replicate_resource(request, node, group_id, mem_of_node_id=None):
             pull_triples(source_node=node, target_node=new_gsystem, 
                             group_id=group_id, user_id=user_id)
         if "QuizItem" in node.member_of_names_list or "QuizItemEvent" in node.member_of_names_list:
-            from gnowsys_ndf.ndf.templatetags.ndf_tags import get_thread_node
+            from ndf.templatetags.ndf_tags import get_thread_node
             thread_obj = get_thread_node(new_gsystem._id)
             if not thread_obj:
                 thread_obj = create_thread_for_node(request,group_id, new_gsystem)
@@ -2986,374 +2886,12 @@ def replicate_resource(request, node, group_id, mem_of_node_id=None):
         print("Failed replicating resource")
         return None
 
-@get_execution_time
-def dig_nodes_field(parent_node, field_name="collection_set", 
-    only_leaf_nodes=False, member_of=None, list_of_node_ids = []):
-  '''
-  This function fetches list of ObjectIds by
-  digging into the node's field_name and
-  the result's field_name recursively.
-
-  'field_name' can be collection_set/prior_node/post_node etc.
-  'member_of' is a list of GST names e.g ['Page', 'File']
-
-  If 'only_leaf_nodes' is True, the leaf nodes will be fetched,
-  i.e the nodes not having any value in their said field_name
-
-  To invoke this function:
-    result = dig_nodes_field(node_obj)/
-    result = dig_nodes_field(node_obj,'collection_set')/
-    result = dig_nodes_field(node_obj,'collection_set',True)/
-    empty_list = []
-    result = dig_nodes_field(node_obj,'collection_set',True,empty_list)/
-    result = dig_nodes_field(node_obj,'collection_set',True,test_list,['Page'])/
-    result = dig_nodes_field(node_obj,'collection_set',True,test_list,['Page','File])
-  '''
-  # print "\n\n Node name -- ", parent_node.name, "-- ",parent_node[field_name]
-
-  for each_id in parent_node[field_name]:
-    if each_id not in list_of_node_ids:
-      each_obj = node_collection.one({'_id': ObjectId(each_id)})
-      # print "each_obj--",each_obj._id, " -- ", each_obj.name, " - - ", each_obj.member_of_names_list, "=== ", member_of
-      member_of_match = True
-      if member_of:
-        member_of_match = False
-        member_of_match = [each_ele for each_ele in member_of if each_ele in each_obj.member_of_names_list]
-        # print "member_of_match",member_of_match
-      if member_of_match and each_id not in list_of_node_ids:
-        # print "File Found", len(each_obj[field_name])
-        if only_leaf_nodes:
-          if not each_obj[field_name]:
-            list_of_node_ids.append(each_id)
-          else:
-            dig_nodes_field(each_obj, field_name,only_leaf_nodes, member_of, list_of_node_ids)
-        else:
-            list_of_node_ids.append(each_id)
-
-
-  # print "\n len(list_of_node_ids) -- ",len(list_of_node_ids)
-  return list_of_node_ids
-
-def sublistExists(parent_list, child_list):
-    # print "\n parent_list == ",parent_list
-    # print "\n child_list == ",child_list
-    if parent_list and child_list:
-      exists = all(each_item in parent_list for each_item in child_list)
-      return exists
-    return False
-
-def get_course_completed_ids(list_of_all_ids,children_ids,return_completed_list,return_incompleted_list):
-    completed = return_completed_list
-    incompleted = return_incompleted_list
-    # children_ids_list = children_ids
-    children_ids_list = []
-    all_nodes = node_collection.find({'_id': {'$in': list_of_all_ids}},
-      {'name':1, 'collection_set':1, '_id': 1, 'member_of': 1,'created_at':1}).sort('created_at',-1)
-
-    for eachnode in all_nodes:
-      # print "\n eachnode.name --- ",eachnode.name , eachnode.member_of_names_list
-      if sublistExists(children_ids, eachnode.collection_set):
-        completed.append(eachnode._id)
-        children_ids_list.append(eachnode._id)
-        if eachnode._id in incompleted:
-          incompleted.remove(eachnode._id)
-      else:
-        incompleted.append(eachnode._id)
-    # print "\n\n completed_ids_list 1--- ", completed
-    # print "\n\n incompleted_ids_list1 --- ", incompleted
-    if children_ids_list:
-      get_course_completed_ids(list_of_all_ids,children_ids_list,completed,incompleted)
-
-    return completed, incompleted
-
-@get_execution_time
-def get_group_join_status(group_obj):
-    from gnowsys_ndf.ndf.templatetags.ndf_tags import get_attribute_value
-    allow_to_join = None
-    start_enrollment_date = get_attribute_value(group_obj._id,"start_enroll")
-    last_enrollment_date = get_attribute_value(group_obj._id,"end_enroll")
-    curr_date_time = datetime.now().date()
-
-    if start_enrollment_date and last_enrollment_date:
-      start_enrollment_date = start_enrollment_date.date()
-      last_enrollment_date = last_enrollment_date.date()
-      if start_enrollment_date <= curr_date_time and last_enrollment_date >= curr_date_time:
-          allow_to_join = "Open"
-      else:
-          allow_to_join = "Closed"
-    return allow_to_join
-
-@get_execution_time
-def get_course_completetion_status(group_obj, user_id,ids_list=False):
-    result_dict = {'success': False}
-    try:
-      user_obj = User.objects.get(pk=int(user_id))
-      '''
-      for cs in group_obj.collection_set:
-        cs_node = node_collection.one({'_id': ObjectId(cs)})
-        all_node_ids.append(cs_node._id)
-        if cs_node:
-          all_cs_count = all_cs_count + 1
-          for css in cs_node.collection_set:
-            css_node = node_collection.one({'_id': ObjectId(css)})
-            all_node_ids.append(css_node._id)
-            if css_node:
-              for cu in css_node.collection_set:
-                cu_node = node_collection.one({'_id': ObjectId(cu)})
-                all_node_ids.append(cu_node._id)
-                if cu_node:
-                  for res in cu_node.collection_set:
-                    all_node_ids.append(res)
-                    # res_node = node_collection.one({'_id': ObjectId(res)})
-                    b = benchmark_collection.find({'name': "course_resource_detail",
-                        'calling_url': {'$regex': '/'+unicode(res)+'/$'},
-                        'user': user_obj.username
-                        })
-                    if b.count():
-                      completed_cs_count = completed_cs_count + 1
-                      res_completed_ids.append(res)
-                      completed_ids.append(res)
-                    # else:
-                    #   incompleted_ids.append(res)
-                  if all(each_item in completed_ids for each_item in cu_node.collection_set):
-                    completed_ids.append(cu_node._id)
-                  else:
-                    partially_exists = any(each_id in completed_ids for each_id in cu_node.collection_set)
-                    if partially_exists:
-                      incompleted_ids.append(cu_node._id)
-
-              if all(each_item in completed_ids for each_item in css_node.collection_set):
-                completed_ids.append(css_node._id)
-              else:
-                partially_exists = any(each_id in completed_ids for each_id in css_node.collection_set)
-                if partially_exists or all(each_item in incompleted_ids for each_item in css_node.collection_set):
-                  incompleted_ids.append(css_node._id)
-
-          if all(each_item in completed_ids for each_item in cs_node.collection_set):
-            completed_ids.append(cs_node._id)
-          else:
-            partially_exists = any(each_id in completed_ids for each_id in cs_node.collection_set)
-            if partially_exists or all(each_item in incompleted_ids for each_item in cs_node.collection_set):
-              incompleted_ids.append(cs_node._id)
-      '''
-
-
-      all_res = set()
-      regex_res_ids = ''
-      completed_unit_ids = []
-      unit_event_gst = node_collection.one({'_type':"GSystemType", 'name':"CourseUnitEvent"})
-      cs_event_gst = node_collection.one({'_type':"GSystemType", 'name':"CourseSectionEvent"})
-      css_event_gst = node_collection.one({'_type':"GSystemType", 'name':"CourseSubSectionEvent"})
-
-      all_units_of_grp = node_collection.find({'member_of': unit_event_gst._id,'group_set': group_obj._id})
-      all_sessions_of_grp = node_collection.find({'member_of': css_event_gst._id,'group_set': group_obj._id})
-      all_modules_of_grp = node_collection.find({'member_of': cs_event_gst._id,'group_set': group_obj._id})
-
-      unit_info_before_query = {}
-      for each in all_units_of_grp:
-        all_res.update(each.collection_set)
-        unit_info_before_query.update({unicode(each._id): set(map(unicode,each.collection_set))})
-
-      for each_res in all_res:
-        regex_res_ids += '/'+each_res.__str__()+'/$|'
-      regex_res_ids = regex_res_ids[:-1]
-      benchmark_res = benchmark_collection.find({'name':"course_resource_detail", 'calling_url': {'$regex': regex_res_ids}, 'user': user_obj.username, 'group': unicode(group_obj._id)},{'_id':0,'calling_url':1})
-
-      unit_info_after_query = {}
-      for each_benchmark in benchmark_res:
-        calling_url_split = each_benchmark['calling_url'].split('/')
-        if len(calling_url_split) > 5:
-          if calling_url_split[5] in unit_info_after_query.keys():
-            val = unit_info_after_query[unicode(calling_url_split[5])]
-          else:
-            val = set()
-          val.add(calling_url_split[6])
-          unit_info_after_query.update({unicode(calling_url_split[5]):val})
-
-      for each_unit in unit_info_after_query:
-        if each_unit in unit_info_before_query:
-          if unit_info_after_query[each_unit] == unit_info_before_query[each_unit]:
-            completed_unit_ids.append(ObjectId(each_unit))
-      completed_sessions_ids_final = []
-      completed_units_cur = node_collection.find({'_id': {'$in': completed_unit_ids}},{'_id':0, 'prior_node':1})
-      completed_sessions_ids = [each_completed_unit_node.prior_node[0] for each_completed_unit_node in completed_units_cur]
-      completed_sessions_cur = node_collection.find({'_id': {'$in': completed_sessions_ids},'member_of': css_event_gst._id})
-
-      for each_session in completed_sessions_cur:
-        if all(each_u_id in completed_unit_ids for each_u_id in each_session.collection_set):
-          completed_sessions_ids_final.append(each_session._id)
-
-      completed_sessions_cur_final = node_collection.find({'_id': {'$in': completed_sessions_ids_final},'member_of': css_event_gst._id})
-      completed_modules_ids = [each_completed_session_node.prior_node[0] for each_completed_session_node in completed_sessions_cur_final]
-      completed_modules_cur = node_collection.find({'_id': {'$in': completed_modules_ids},'member_of': cs_event_gst._id})
-      completed_modules = []
-      for each_module in completed_modules_cur:
-        if all(each_m_id in completed_sessions_ids_final for each_m_id in each_module.collection_set):
-          completed_modules.append(each_module._id)
-
-
-      # print "\nTotal modules : ", all_modules_of_grp.count()
-      # print "\nCompleted modules : ", len(completed_modules_ids)
-
-      # print "\nTotal Units : ", all_units_of_grp.count()
-      # print "\nCompleted Units : ", len(completed_unit_ids)
-
-      return_perc = (len(completed_modules_ids)/float(all_modules_of_grp.count()))*100
-
-      # print "\n\n return_perc==== ",return_perc
-      result_dict['course_complete_percentage'] = return_perc
-      result_dict['modules_completed_count'] = completed_modules_cur.count()
-      result_dict['modules_total_count'] = all_modules_of_grp.count()
-      result_dict['units_completed_count'] = completed_units_cur.count()
-      result_dict['units_total_count'] = all_units_of_grp.count()
-
-
-      result_dict.update({'success': False})
-      # print "\n\nresult_dict == ",result_dict
-      return result_dict
-    except Exception as error_in_get_course_completion_status:
-      # print "\n ERROR in get_course_completetion_status", error_in_get_course_completion_status
-      return result_dict
-
-def get_all_iframes_of_unit(group_obj, domain):
-    # tuple : [[assessment.Bank<id>, assessment.Offered<id>],
-    # [assessment.Bank<id>, assessment.Offered<id>]]
-    # ref: https://docs.python.org/2.7/library/urlparse.html#urlparse.parse_qsl
-    from bs4 import BeautifulSoup
-    result_set = []
-    assessment_str = "assessment.Bank"
-    group_id  = group_obj._id
-    try:
-        gst_page_name, gst_page_id = GSystemType.get_gst_name_id("Page")
-        gst_wiki_page_name, gst_wiki_page_id = GSystemType.get_gst_name_id("Wiki page")
-
-        # Fech all pages having assessments embedded into it
-        pages_holding_assessments_cur = node_collection.find({
-                    'group_set': ObjectId(group_id),
-                    'member_of': gst_page_id,
-                    'type_of': {'$ne': gst_wiki_page_id},
-                    'content': {'$regex': assessment_str, '$options': "i"}
-            })
-
-
-        # From each page's content collect the assessment iframe
-        for each_node in pages_holding_assessments_cur:
-            all_iframes = BeautifulSoup(
-                each_node.content, 'html.parser').find_all(
-                'iframe',src=re.compile(assessment_str)
-            )
-            for each_iframe in all_iframes:
-                try:
-                    bank_offered_id = parse_assessment_url(each_iframe["src"])
-                    if bank_offered_id not in result_set:
-                        result_set.append(bank_offered_id)
-                except Exception as iframe_update_err:
-                    print("\nError Occurred in calling parse_assessment_url() {0}".format(
-                        iframe_update_err))
-                    pass
-        '''
-        AT: "assessment_list" will hold `result_set = [[a,b], [x,y]]`
-            where 'a' and 'x' represent bank id &
-            where 'b' and 'y' represent assessment_offered_id
-        '''
-        if result_set:
-            create_gattribute(group_id, "assessment_list", result_set)
-            group_obj.reload()
-            # print "\nresult_set: ", result_set
-            update_total_assessment_items(group_id, result_set, domain)
-            group_obj.reload()
-    except Exception as get_all_iframes_of_unit_err:
-        print("\nError Occurred in get_all_iframes_of_unit() {0}".format(
-            get_all_iframes_of_unit_err))
-        pass
-
-    return group_obj
-
-def parse_assessment_url(url_as_str):
-    import urlparse
-    bank_offered_id = [None,None]
-    try:
-        parsed_src = urlparse.urlparse(url_as_str)
-        get_params = urlparse.parse_qsl(parsed_src.query)
-        # print "\nget_params: ", get_params
-        for param in get_params:
-            if 'bank' in param[0]:
-                bank_offered_id[0] = param[1]
-            if 'assessment_offered_id' in param[0]:
-                bank_offered_id[1] = param[1]
-        return bank_offered_id
-    except Exception as iframe_update_err:
-        print("\nError Occurred in parse_assessment_url() {0}".format(
-            iframe_update_err))
-        return bank_offered_id
-
-def update_total_assessment_items(group_id, assessment_list, domain):
-    from gnowsys_ndf.ndf.views.assessment_analytics import items_count_from_asessment_offered
-    import urllib
-    questionCount_val = 0
-    try:
-        for each_assessment_list in assessment_list:
-            items_count = items_count_from_asessment_offered(domain,each_assessment_list[0],each_assessment_list[1])
-            questionCount_val = questionCount_val + items_count
-            print("\nquestionCount_val: ", questionCount_val)
-
-        '''
-        AT: "total_assessment_items" will hold `questionCount_val = x`
-            where 'x' represent count of questions
-        '''
-
-        print("\nAC: ", questionCount_val)
-        create_gattribute(group_id, "total_assessment_items", questionCount_val)
-        return questionCount_val
-    except Exception as update_total_assessment_items_err:
-        print("\nError Occurred in update_total_assessment_items() {0}".format(
-            update_total_assessment_items_err))
-        return questionCount_val
-
-@get_execution_time
-def update_unit_in_modules(module_val, unit_id):
-    gst_module_name, gst_module_id = GSystemType.get_gst_name_id('Module')
-    # get all modules which are parent's of this unit/group
-    parent_modules = node_collection.find({
-            '_type': 'GSystem',
-            'member_of': gst_module_id,
-            'collection_set': {'$in': [unit_id]}
-        })
-    # check for any mismatch in parent_modules and module_val
-    if parent_modules or module_val:
-        # import ipdb; ipdb.set_trace()
-        module_oid_list = [ObjectId(m) for m in module_val if m]
-        parent_modules_oid_list = [o._id for o in parent_modules]
-
-        # summing all ids to iterate over
-        oids_set = set(module_oid_list + parent_modules_oid_list)
-
-        for each_oid in oids_set:
-            if each_oid not in module_oid_list:
-                # it is an old module existed with curent unit.
-                # remove current node's id from it's collection_set
-                # existing deletion
-                each_node_obj = Node.get_node_by_id(each_oid)
-                each_node_obj_cs = each_node_obj.collection_set
-                each_node_obj_cs.pop(each_node_obj_cs.index(unit_id))
-                each_node_obj.collection_set = each_node_obj_cs
-                each_node_obj.save(group_id=unit_id)
-            elif each_oid not in parent_modules_oid_list:
-                # if this id does not exists with existing parent's id list
-                # then add current node_id in collection_set of each_oid.
-                # new addition
-                each_node_obj = Node.get_node_by_id(each_oid)
-                if unit_id not in each_node_obj.collection_set:
-                    each_node_obj.collection_set.append(unit_id)
-                    each_node_obj.save(group_id=unit_id)
-
-@get_execution_time
 def add_to_author_set(group_id, user_id, add_admin=False):
-    def _update_user_counter(userid, group_id):
+    '''    def _update_user_counter(userid, group_id):
         counter_obj = Counter.get_counter_obj(userid, ObjectId(group_id))
         counter_obj['is_group_member'] = True
         counter_obj.save()
-
+    '''
     group_obj = get_group_name_id(group_id, get_obj=True)
     if group_obj:
         try:
@@ -3376,7 +2914,7 @@ def add_to_author_set(group_id, user_id, add_admin=False):
                     if user_id not in group_obj.author_set:
                         group_obj.author_set.append(user_id)
             group_obj.save()
-
+            '''
             if 'Group' not in group_obj.member_of_names_list:
                 # get new/existing counter document for a user for a given course for the purpose of analytics
                 if isinstance(user_id, list):
@@ -3385,31 +2923,8 @@ def add_to_author_set(group_id, user_id, add_admin=False):
                 else:
                     _update_user_counter(user_id, group_obj._id)
             # print "\n Added to author_set"
+            '''
         except Exception as e:
             pass
         return group_obj
     pass
-
-@get_execution_time
-def auto_enroll(f):
-    def wrap(*args,**kwargs):
-
-        ret = f(*args,**kwargs)
-        if GSTUDIO_IMPLICIT_ENROLL:
-            group_id = kwargs.get("group_id", None)
-            user_id = None
-            request = args[0] if len(args) else None
-            if request and isinstance(request, WSGIRequest):
-                user_id = [request.user.id]
-                if GSTUDIO_BUDDY_LOGIN:
-                    user_id += Buddy.get_buddy_userids_list_within_datetime(request.user.id,
-                                         datetime.now())
-            else:
-                user_id = kwargs.get("user_id", None)
-                if not user_id:
-                    user_id = kwargs.get("created_by", None)
-
-            if user_id and group_id:
-                add_to_author_set(group_id=group_id, user_id=user_id)
-        return ret
-    return wrap

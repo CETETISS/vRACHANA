@@ -108,12 +108,13 @@ import mongoengine
 DATABASES = {
     'default' : {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',             # Used for postgres db                                                                         
-	'NAME': 'gstudio_psql',                                                 # Used for postgres db                                                                 
-        'USER': 'glab',                                                                 # Used for postgres db                                                         
-        'PASSWORD':'Gstudi02)1^',                                               # Used for postgres db                                                                 
-        'HOST':'172.18.0.3',                                                             # Used for p 
+	    'NAME': 'verc_psql',                                                 # Used for postgres db                                                                 
+        'USER': 'vrachana',                                                                 # Used for postgres db                                                         
+        'PASSWORD':'verc_cete',                                               # Used for postgres db                                                                 
+        'HOST':'172.18.0.2',                                                             # Used for p 
         'PORT':'5432',
         },
+
     }
 
 
@@ -195,11 +196,9 @@ STATICFILES_FINDERS = (
 SECRET_KEY = '7st0sdv&amp;7yw*eh)zmaz8#t48nr$&amp;ql#ow=$0l^#b_b&amp;$9c*$4c'
 
 # List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+    #  'django.template.loaders.app_directories.Loader',
     #  'django.template.loaders.eggs.Loader',
-)
+#)
 
 MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
@@ -264,14 +263,10 @@ AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 INSTALLED_APPS = (
     'ndf',
-    #'gnowsys_ndf.Testing',
-    # 'dlkit',
     'django.contrib.auth',
     'django.contrib.admin',
     'django.contrib.contenttypes',
