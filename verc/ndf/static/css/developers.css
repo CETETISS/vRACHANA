@@ -1,0 +1,92 @@
+
+/* add custom ribbon colors to display cards category labels */
+
+
+.color-module{
+    background-color:#FFA621;
+}
+span.badge-dot.color-tutorials {
+    background-color: #b92d3a;
+}
+.ribbon-lbl.color-module{
+    background-color:#FFA621;
+    color: #fff;
+}
+.ribbon-lbl.color-module::before{ 
+    border-color:#FFA621;
+    border-left-width:0;
+    border-right-color:transparent;
+}
+
+.color-tutorial{
+    background-color:#16af8f;
+}
+.ribbon-lbl.color-tutorial{
+    background-color:#0CAC8B;
+    color: #fff;
+}
+.ribbon-lbl.color-tutorial::before{ 
+    border-color:#0CAC8B;
+    border-left-width:0;
+    border-right-color:transparent;
+}
+.color-curation {
+    background-color: #f451ff;
+}
+.color-interactive{
+    background-color:#776efb;
+}
+.ribbon-lbl.color-interactive{
+    background-color:#8103FF;
+    color: #fff;
+}
+.ribbon-lbl.color-interactive::before{ 
+    border-color:#8103FF;
+    border-left-width:0;
+    border-right-color:transparent;
+}
+
+/* Colors */
+      
+.corner-ribbon.white{background: #f0f0f0; color: #555;}
+.corner-ribbon.black{background: #333;}
+.corner-ribbon.grey{background: #999;}
+.corner-ribbon.blue{background: #39d;}
+.corner-ribbon.green{background: #2c7;}
+.corner-ribbon.turquoise{background: #1b9;}
+.corner-ribbon.purple{background: #95b;}
+.corner-ribbon.red{background: #e43;}
+.corner-ribbon.orange{background: #e82;}
+.corner-ribbon.yellow{background: #ec0;}
+
+/* // Small devices (landscape phones, 576px and up) - sm */
+@media (min-width: 576px) {
+    /* // end of media 576 */
+}
+
+/* // Medium devices (tablets, 768px and up) - md */
+@media (min-width: 768px) {
+  
+  
+  
+    /* // end of media 768 */
+}
+
+/* // Large devices (desktops, 992px and up) - lg */
+@media (min-width: 992px) {
+  
+    /* // end of media 992 */
+}
+
+/* // Extra large devices (large desktops, 1200px and up) - xl */
+@media (min-width: 1200px) {
+  
+    /* // end of media 1200 */
+}
+
+/* // Extra Extra large devices (larger desktops, 1400px and up) - xxl */
+@media (min-width: 1400px) {
+  
+    /* // end of media 1400 */
+}
+
