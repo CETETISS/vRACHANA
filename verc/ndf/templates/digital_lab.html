@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+{% block title %}Design Lab{% endblock title %}
+{% load static %}
+{% block body %}
+<div class="body-container" >
+    <!-- Sub header (internal pages) -->
+    <section class="sub-header">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2 class="mt-3 mb-1">Design Lab</h2>
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Design Lab</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- tab section removed -->
+
+    <section class="page-content-layer ">
+      <div class="container-fluid container-lg">
+        <div class="row align-items-stretch justify-content-center " >
+          <div class="col-10 col-lg-12 col-xl-9 order-2">
+
+           
+            <section class="section-container page-content position-relative" >
+              
+              <div class="row justify-content-center justify-content-xl-start ms-xl-5">
+                <div class="col-11">
+
+                  <!-- scroll spy content -->
+                  <div >
+
+                      <!-- each scroll setion -->
+                      <div class="row border-bottom pb-5 mb-5" id="list-item-1">
+                        <div class="col">
+                          <h4 class="title">About Design Lab</h4>
+                          <p>
+                            <img class="d-block d-lg-inline-block float-lg-end img-fluid p-2" src="{% static 'images/static/shapes/cta-shape.png' %}" >
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                          </p>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                      <!-- each scroll setion ends-->
+
+                    <!-- each scroll setion -->
+                    <div class="row border-bottom pb-5 mb-5" id="list-item-2">
+                      <div class="col">
+                        <h4 class="title">Design Flow</h4>
+                        <p>
+                          <img class="d-block d-lg-inline-block float-lg-start img-fluid p-2" src="{% static 'images/static/shapes/cta-shape.png' %}" >
+                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <!-- accordian -->
+
+                        <div class="accordion accordion-flush accordion-clear py-5" id="accordionFlushExample">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                              <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+                                <i class="fa-solid fa-genderless me-2"></i> Design Process
+                              </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="">
+                              <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingTwo">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                <i class="fa-solid fa-genderless  me-2"></i> Design Mindset
+                              </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="">
+                              <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                <i class="fa-solid fa-genderless  me-2"></i> Design Toolkit
+                              </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="">
+                              <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- accordian ends -->
+
+                      </div>
+                    </div>
+                    <!-- each scroll setion ends-->
+
+                     <!-- each scroll setion -->
+                     <div class="row border-bottom pb-5 mb-5" id="list-item-3">
+                      <div class="col">
+                        <h4 class="title">Courses and workshops</h4>
+                        <p>
+                          <img class="d-block d-lg-inline-block float-lg-end img-fluid p-2" src="{% static 'images/static/shapes/cta-shape.png' %}" >
+                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                        <a href="#" class="btn theme-btn-primary my-3">View Courses</a> <a href="#" class="btn theme-btn-primary my-3">View Workshops</a>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                    <!-- each scroll setion ends-->
+
+                     <!-- each scroll setion -->
+                     <div class="row border-bottom pb-5 mb-5" id="list-item-4">
+                      <div class="col">
+                        <h4 class="title">Testimonials</h4>
+                        <!-- testimonial Swiper -->
+                          <div class="swiper inner-testimonials-slider">
+                            <div class="swiper-wrapper">
+                              <!-- swiper slide -->
+               <div class="swiper-slide">
+                <div class="display-card">
+                  
+                  <div class="card-data-section">
+                  
+                    <div class="content testimonial-content">
+                   
+                     <p class="desc">
+                       Meet fellow students and ask for help and reviews of your code. Programming is a team activity, so make the jump and share your code and knowledge with others.”
+                       Meet fellow students and ask for help and reviews of your code. Programming is a team activity, so make the jump and share your code and knowledge with others.”
+                     </p>
+
+                     <h5 class="by">Satej Shende</h5>
+                     <h6 class="pin">Tiss, Proejct Manager</h6>
+                     <div class="loc">Mumbai</div>
+     
+                   </div>
+
+                  </div>
+               
+                </div>
+              </div>
+              <!-- swiper slide ends-->
+
+              <!-- swiper slide -->
+              <div class="swiper-slide">
+                <div class="display-card">
+                  
+                  <div class="card-data-section">
+                  
+                    <div class="content testimonial-content">
+                   
+                     <p class="desc">
+                       Meet fellow students and ask for help and reviews of your code. Programming is a team activity, so make the jump and share your code and knowledge with others.”
+                       
+                     </p>
+
+                     <h5 class="by">Satej Shende2</h5>
+                     <h6 class="pin">Tiss, Proejct Manager</h6>
+                     <div class="loc">South Mumbai</div>
+     
+                   </div>
+
+                  </div>
+               
+                </div>
+              </div>
+              <!-- swiper slide ends-->
+
+                  <!-- swiper slide -->
+                  <div class="swiper-slide">
+                  <div class="display-card">
+                    
+                    <div class="card-data-section">
+                    
+                      <div class="content testimonial-content">
+                    
+                      <p class="desc">
+                        Meet fellow students and ask for help and reviews o
+                      </p>
+
+                      <h5 class="by">Satej Shende 3</h5>
+                      <h6 class="pin">Tiss, Proejct Manager</h6>
+                      <div class="loc">Mumbai 3</div>
+
+                    </div>
+
+                    </div>
+
+                  </div>
+                  </div>
+                  <!-- swiper slide ends-->
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                          </div>
+                          <!-- testimonial Swiper ends -->
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                    <!-- each scroll setion ends-->
+
+                     <!-- each scroll setion -->
+                     <div class="row border-bottom pb-5 mb-5" id="list-item-5">
+                      <div class="col">
+                        <h4 class="title">Discussions</h4>
+                        <p>
+                          <img class="d-block d-lg-inline-block float-lg-end img-fluid p-2" src="{% static 'images/static/shapes/cta-shape.png' %}" >
+                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                        <a href="#" class="btn theme-btn-primary my-3">View Discussions</a>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                    <!-- each scroll setion ends-->
+
+                    <!-- each scroll setion -->
+                    <!-- border-bottom removed -->
+                    <div class="row  pb-5 mb-5" id="list-item-6">
+                      <div class="col">
+                        <h4 class="title">Share your experience</h4>
+                        <img class="d-block d-lg-inline-block float-lg-end img-fluid mb-4" src="{% static 'images/static/shapes/cta-shape.png' %}" >
+                        <h6 class="my-3 fw-light">TOGETHER WE CAN MAKE A DIFFERENCE</h6>
+                        <h1 class="my-3">DO YOU HAVE A<br>
+                          STORY TO SHARE</h1>
+                        <p>Across the globe, 617 million children are missing basic math and reading skills. We’re a nonprofit delivering the education they need, and we need your help. You can change the course of a child’s life.</p>
+                        <a class="btn theme-btn-primary my-3" href="#">Share your experience</a>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                    <!-- each scroll setion ends-->
+
+                    
+                  </div>
+                    <!-- scroll spy content ends above-->
+
+                </div>
+              </div>
+
+              
+              
+            </section>
+
+          </div>
+          <!-- section col-8 ends above -->
+          <!-- just change order and border-right to make sidebar left side -->
+          <div class="col-lg-12 col-xl-3 order-1 sidebar border-right">
+           
+            <div class="quick-sticky-nav stick-this section-container">
+              <!-- side nav -->
+              <div class="side-nav-contaianer">
+                <button class="side-sticky-btn">
+                  <i class="fi fi-rs-list"></i> Quick Links
+                </button>
+                  <div class="list-group side-nav spy-nav">
+                    <a href="#list-item-1" class="list-group-item list-group-item-action active" aria-current="true">
+                      <i class="fa-solid fa-angles-right"></i> About Design Lab
+                    </a>
+                    <a href="#list-item-2" class="list-group-item list-group-item-action"><i class="fa-solid fa-angles-right"></i> Design flow</a>
+                    <a href="#list-item-3" class="list-group-item list-group-item-action"><i class="fa-solid fa-angles-right"></i> Courses and workshops</a>
+                    <a href="#list-item-4" class="list-group-item list-group-item-action"><i class="fa-solid fa-angles-right"></i> Testimonials</a>
+                    <a href="#list-item-5" class="list-group-item list-group-item-action"><i class="fa-solid fa-angles-right"></i> Discussions</a>
+                    <a href="#list-item-6" class="list-group-item list-group-item-action"><i class="fa-solid fa-angles-right"></i> Share your experience</a>
+                  </div>
+              </div>
+              <!-- side nav ends -->
+          </div>
+          <div class="sidebar-content">
+          
+          </div>
+          <!-- sidebar ends above -->
+        </div>
+          <!-- ----------- -->
+        
+          <!-- section col-4 ends above -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Sub header ends -->
+
+    <!--  -->
+    </div> 
+{% endblock body %}

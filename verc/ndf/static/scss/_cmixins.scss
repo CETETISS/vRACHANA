@@ -1,0 +1,71 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+//.box { @include border-radius(10px); }
+
+
+@mixin media-breakpoint-up($media) {
+  // X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+  @if $media == sm {
+    @media (min-width: 576px) { @content; }
+  }
+  // Medium devices (tablets, 768px and up)
+  @if $media == md {
+    @media (min-width: 768px) { @content; }
+  }
+// Large devices (desktops, 992px and up)
+  @if $media == lg {
+    @media (min-width: 992px) { @content; }
+  }
+// X-Large devices (large desktops, 1200px and up)
+  @if $media == xl {
+    @media (min-width: 1200px) { @content; }
+  }
+// XX-Large devices (larger desktops, 1400px and up)
+  @if $media == xxl {
+    @media (min-width: 1400px) { @content; }
+  }
+}
+
+
+// ----
+// usage
+// .header-title {  
+//    font-size: 2rem;  
+ 
+//   @include media-breakpoint-up(sm) {
+//       font-size: 1rem; 
+//    }
+// }
+
+@mixin media-breakpoint-down($media) {
+  // X-Small devices (portrait phones, less than 576px)
+  @if $media == xs {
+    @media (max-width: 575.98px) { @content; }
+  }
+  // Small devices (landscape phones, less than 768px)
+  @if $media == sm {
+    @media (max-width: 767.98px) { @content; }
+  }
+  // Medium devices (tablets, less than 992px)
+  @if $media == md {
+    @media (max-width: 991.98px) { @content; }
+  }
+// Large devices (desktops, less than 1200px)
+  @if $media == lg {
+    @media (max-width: 1199.98px) { @content; }
+  }
+// X-Large devices (large desktops, less than 1400px)
+  @if $media == xl {
+    @media (max-width: 1399.98px) { @content; }
+  }
+// XX-Large devices (larger desktops)
+// No media query since the xxl breakpoint has no upper bound on its width
+ 
+}
