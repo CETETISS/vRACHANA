@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock title %}
+{% load static %}
+{% block body %}
+<section class="sub-header">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2 class="mt-3 mb-1">About</h2>
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">About</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-container page-content ">
+  <div class="container">
+    <div class="row">
+      <div class="col-10 mx-auto">
+        <h1 class="title text-center align-items-center">
+          Rachana
+          <span class=""></span>
+        </h1>
+        <h4 class="text-center mb-5">A Resource Centre and Design Lab</h4>
+        <p class="text-center lead pb-4">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+        <img src="{% static 'images/static/about-rachana-img.jpeg' %}" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</section>
+{% include 'why_rachana.html' %}
+<!-- explore -->
+<section class="section-container bg-style--section-05">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-xl-5 col-xxl-6">
+        <img src="{% static 'images/static/explore-01.png' %}" class="img-fluid">
+      </div>
+      <div class="col-lg-6 col-xl-7 col-xxl-6">
+
+       
+        <h1 class="title text-center align-items-center text-lg-start align-items-lg-start mb-3">
+          Our Aim
+          <span></span>
+        </h1>
+
+        
+        <p class="lead">
+          This is a lead paragraph. It stands out from regular paragraphs.
+          This is a lead paragraph. It stands out from regular paragraphs.
+          This is a lead paragraph. It stands out from regular paragraphs.
+        </p>
+
+        
+        <div class="d-flex justify-content-center justify-content-lg-start">
+          <a href="#" class="btn theme-btn-primary my-3">View our Story</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row align-items-center mt-5">
+      <div class="col-lg-6 col-xl-5 col-xxl-6 order-lg-2">
+        <img src="{% static '/images/static/explore-02.png' %}" class="img-fluid">
+      </div>
+      <div class="col-lg-6 col-xl-7 col-xxl-6 order-lg-1">
+
+       
+        <h1 class="title text-center align-items-center text-lg-start align-items-lg-start mb-3">
+          Our Mission
+          <span></span>
+        </h1>
+
+        <p class="lead">
+          This is a lead paragraph. It stands out from regular paragraphs.
+          This is a lead paragraph. It stands out from regular paragraphs.
+          This is a lead paragraph. It stands out from regular paragraphs.
+        </p>
+        <p class="lead">
+          This is a lead paragraph. It stands out from regular paragraphs.
+          This is a lead paragraph. It stands out from regular paragraphs.
+          This is a lead paragraph. It stands out from regular paragraphs.
+        </p>
+
+        
+        <div class="d-flex justify-content-center justify-content-lg-start">
+          <a href="#" class="btn theme-btn-primary my-3">Meet the Team</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  </section>
+  <!-- explore ends-->
+  {% include 'our_offerings.html' %}
+
+
+
+   {% endblock body %}
+   

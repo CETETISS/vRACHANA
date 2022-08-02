@@ -1,0 +1,55 @@
+//google font
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');
+@import url('https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css');
+@import url('https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css');
+@import url('https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css');
+// Font Variables  
+$roboto: 'Roboto', sans-serif;
+
+//define colors
+$black: #000000;
+$white: #ffffff;
+
+$charcoal-grey: #3A3A3A;
+$elephant-grey:#616161;
+$cement-grey:#C4C4C4;
+$mild-grey:#F5F8F5;
+$light-grey: #F9F8F7;
+$mid-grey: #F8F8F8;
+$dark-grey: #777777;
+
+
+
+$aqua-blue: #36393d;
+$sky-blue :#D5F0FF;
+
+$green:#0CAC8B;
+$dark-green:#07876e;
+$bright-green:#01E7B8;
+
+$red: #FF3B51;
+$cherry-red: #EA4335;
+$pink: #FF6584;
+
+
+
+$light-yelow: #FFFAEC;
+$dark-yellow: #FFA621;
+
+$lightest-orange: #FFF7EF;
+$orange:#FF7A00;
+
+$purple: #8103FF;
+$voilet: #4F20FF;
+$dark-blue: #102E41;
+$navy-blue: #0D5ACD;
+
+$primary-font-size: 16px;
+$primary-font-color: $charcoal-grey;
+$primary-font-style: $roboto;
+
+$link-color:$light-yelow;
+$link-hover-color:$bright-green;
+
+
+
