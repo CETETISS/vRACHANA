@@ -111,7 +111,7 @@ DATABASES = {
 	    'NAME': 'verc_psql',                                                 # Used for postgres db                                                                 
         'USER': 'vrachana',                                                                 # Used for postgres db                                                         
         'PASSWORD':'verc_cete',                                               # Used for postgres db                                                                 
-        'HOST':'172.18.0.2',                                                             # Used for p 
+        'HOST':'172.18.0.4',                                                             # Used for p 
         'PORT':'5432',
         },
 
@@ -274,7 +274,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-#    'django_registration',
+    'django_registration',
  #   'notification',
  #   'pagination',
     #'captcha',
@@ -316,7 +316,7 @@ LOGGING = {
     }
 }
 
-#LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/"
 #SESSION_COOKIE_DOMAIN = ""
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 3600
