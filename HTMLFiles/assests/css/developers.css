@@ -1,0 +1,127 @@
+
+/* add custom ribbon colors to display cards category labels */
+
+
+.color-module{
+    background-color:#FFA621;
+}
+.ribbon-lbl.color-module{
+    background-color:#FFA621;
+    color: #fff;
+}
+.ribbon-lbl.color-module::before{ 
+    border-color:#FFA621;
+    border-left-width:0;
+    border-right-color:transparent;
+}
+
+.color-tutorial{
+    background-color:#0CAC8B;
+}
+.ribbon-lbl.color-tutorial{
+    background-color:#0CAC8B;
+    color: #fff;
+}
+.ribbon-lbl.color-tutorial::before{ 
+    border-color:#0CAC8B;
+    border-left-width:0;
+    border-right-color:transparent;
+}
+
+.color-interactive{
+    background-color:#8103FF;
+}
+.ribbon-lbl.color-interactive{
+    background-color:#8103FF;
+    color: #fff;
+}
+.ribbon-lbl.color-interactive::before{ 
+    border-color:#8103FF;
+    border-left-width:0;
+    border-right-color:transparent;
+}
+
+/* Colors */
+      
+.corner-ribbon.white{background: #f0f0f0; color: #555;}
+.corner-ribbon.black{background: #333;}
+.corner-ribbon.grey{background: #999;}
+.corner-ribbon.blue{background: #39d;}
+.corner-ribbon.green{background: #2c7;}
+.corner-ribbon.turquoise{background: #1b9;}
+.corner-ribbon.purple{background: #95b;}
+.corner-ribbon.red{background: #e43;}
+.corner-ribbon.orange{background: #e82;}
+.corner-ribbon.yellow{background: #ec0;}
+
+/* // Small devices (landscape phones, 576px and up) - sm */
+@media (min-width: 576px) {
+    /* // end of media 576 */
+}
+
+/* // Medium devices (tablets, 768px and up) - md */
+@media (min-width: 768px) {
+  
+  
+  
+    /* // end of media 768 */
+}
+
+/* // Large devices (desktops, 992px and up) - lg */
+@media (min-width: 992px) {
+  
+    /* // end of media 992 */
+}
+
+/* // Extra large devices (large desktops, 1200px and up) - xl */
+@media (min-width: 1200px) {
+  
+    /* // end of media 1200 */
+}
+
+/* // Extra Extra large devices (larger desktops, 1400px and up) - xxl */
+@media (min-width: 1400px) {
+  
+    /* // end of media 1400 */
+}
+
+/* Show More CSS */
+.showhide {
+    padding: 0 8px;
+    color: #0CAC8B;
+}
+.showhide:hover {
+    color: #FF7A00;
+}
+.add_member_btn{
+    padding: 5px 20px;
+    margin-bottom: 10px;
+}
+.form-control-new{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-control-new:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+button:focus, .btn:focus{
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}

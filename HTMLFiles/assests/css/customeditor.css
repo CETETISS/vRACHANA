@@ -1,0 +1,24 @@
+/* #container {
+          width: 1000px;
+          margin: 20px auto;
+      } */
+      .ck-editor__editable[role="textbox"] {
+        /* editing area */
+        min-height: 200px;
+    }
+    .ck-content .image {
+        /* block images */
+        max-width: 80%;
+        margin: 20px auto;
+    }
+    /*
+* Override the width of the table set by Bootstrap content styles.
+* See: https://github.com/ckeditor/ckeditor5/issues/3253.
+*/
+.ck-content .table {
+  width: auto;
+}
+
+.ck-content .image-inline {
+  display: flex !important;
+}
