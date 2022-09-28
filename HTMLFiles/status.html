@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet">
+
+    <title>Project Status</title>
+  </head>
+  <body>
+    <h1 class="text-center">Project files status</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="searchGridTable" id="gridTable"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Page Name</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     
+
+                      <!-- templates -->
+                      <tr>
+                        <th scope="row" colspan="4" class="bg-secondary text-light">Templates</th>
+                       
+                      </tr>
+                      <tr>
+                        <th scope="row">A</th>
+                        <td><a href="inner-page-bg.html">Full background image & framed form</a>
+                            <br>
+                            Type: <span class="text-danger">Inner page Template</span></td>
+                        <td><span class="badge bg-success">Done</span>
+                       
+                        </td>
+                        <td>
+                            <p>
+                                Can be used for login, forget password, reset password
+                            </p>
+                            
+                          
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">B</th>
+                        <td><a href="inner-page-full.html">Inner page - full section view with link tabs</a>
+                            <br>
+                            Type: <span class="text-danger">Inner page Template</span></td>
+                        <td><span class="badge bg-success">Done</span>
+                       
+                        </td>
+                        <td>
+                            <p>
+                                Can be used for static pages content, eg: about, terms. ...
+                            </p>
+                            
+                          
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">C</th>
+                        <td><a href="inner-page-right.html">Inner page - with right side section</a>
+                            <br>
+                            Type: <span class="text-danger">Inner page Template</span></td>
+                        <td><span class="badge bg-success">Done</span>
+                       
+                        </td>
+                        <td>
+                            <p>
+                                Can be used for dynamic pages implementation
+                            </p>
+                            
+                          
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">D</th>
+                        <td><a href="inner-page-right-spy.html">Inner page -right side section- with scroll spy implementation</a>
+                            <br>
+                            Type: <span class="text-danger">Inner page Template</span></td>
+                        <td><span class="badge bg-success">Done</span>
+                       
+                        </td>
+                        <td>
+                            <p>
+                                Can be used for one page section scrolling...
+                            </p>
+                            
+                          
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">E</th>
+                        <td><a href="inner-page-left.html">Inner page - with left side section</a>
+                            <br>
+                            Type: <span class="text-danger">Inner page Template</span></td>
+                        <td><span class="badge bg-success">Done</span>
+                       
+                        </td>
+                        <td>
+                            <p>
+                                Can be used for dynamic pages implementation
+                            </p>
+                            
+                          
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">F</th>
+                        <td><a href="inner-page-left-spy.html">Inner page -left side section- with scroll spy implementation</a>
+                            <br>
+                            Type: <span class="text-danger">Inner page Template</span></td>
+                        <td><span class="badge bg-success">Done</span>
+                       
+                        </td>
+                        <td>
+                            <p>
+                                Can be used for one page section scrolling...
+                            </p>
+                            
+                          
+                        </td>
+                      </tr>
+                     
+                      <tr>
+                        <th scope="row">G</th>
+                        <td><a href="each-resource.html">Each event resource template page</a>
+                            <br>
+                            Type: <span class="text-danger">Inner page Template</span></td>
+                        <td><span class="badge bg-success">Done</span>
+                       
+                        </td>
+                        <td>
+                            <p>
+                                Has Moderator view and comment page base implemented in this
+                            </p>
+                            
+                          
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                  </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+
+    <script>
+        //.searchGridTable //gridTable
+        let cid=0;
+        const grid = new gridjs.Grid({
+        columns: [
+            { 
+                name: 'id',
+                formatter: (cell) => gridjs.html(`${cell}`)
+                // formatter: (cell) => {
+                //     cid = cid +1;
+                //     return gridjs.html(`${cid}`);
+                // }
+            },  
+            { 
+                data: (row) => [row.page.link, row.page.name],
+                name: 'Page name',
+                formatter: (cell) => gridjs.html(`<a href=${cell[0]}>${cell[1]}</a>`)
+            },
+            { 
+                data: (row) => row.type,
+                name: 'Page Type',
+                formatter: (cell) => gridjs.html(`<b>${cell}</b>`)
+            },
+            { 
+                data: (row) => [row.status.label, row.status.color, row.status.text],
+                name: 'Status',
+                formatter: (cell) => gridjs.html(`<span class="badge bg-${cell[0]} text-${cell[1]}">${cell[2]}</span>`)
+            },
+            {
+                name: 'Comments',
+                formatter: (cell) => gridjs.html(`${cell}`)
+            }
+        ],
+        data: [
+
+        // reference strucutre
+            // {
+            //    id: 1,
+            //     page: {
+            //         name: 'Home',
+            //         link: 'index.html'
+            //     },
+            //     type: 'dynamic',
+            //     status: {
+            //         label: 'info',
+            //         color: 'dark',
+            //         text: 'Under Review'
+            //     },
+            //     comments: ``
+            // },
+            {
+                id: '1',
+                page: {
+                    name: 'Home',
+                    link: 'index.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                comments: `<p>
+                                Developer: Anant <br>
+                                [todo] Search - autocomplete
+                            </p>
+                            <a class="" data-bs-toggle="collapse" href="#collapse_1" role="button" aria-expanded="false" aria-controls="collapse_1">
+                                Major Modules covered
+                              </a> 
+
+                            <div class="collapse" id="collapse_1">
+                                <div class="card card-body">
+                                    <ul>
+                                        <li>Page Laoder - added</li>
+                                        <li>Website On laod pop-up model - added</li>
+                                        <li>
+                                            Header
+                                            <ul>
+                                                <li>Top Nav bar
+                                                    <ul>
+                                                        <li>Font size controller % wise</li>
+                                                        <li>Date feature</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Main Nav bar
+                                                    <ul>
+                                                        <li>Base Nav</li>
+                                                        <li>Search -js </li>
+                                                        <li>Notificaitons - js</li>
+                                                        <li>Sign-in popup</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Breadcrumbs</li>
+                                            </ul>
+                                        </li>
+                                        <li>Main carousel</li>
+                                        <li>Card Slider
+                                            <ul>
+                                                <li>Card
+                                                    <ul>
+                                                        <li>Like Button - js</li>
+                                                        <li>Share Button - js</li>
+                                                        <li>Share Popup - js
+                                                            <ul>
+                                                                <li>Each social share code</li>
+                                                                <li>Copy link</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>Login pop up
+                                            <ul>
+                                                <li>Social login icons</li>
+                                                <li>Alerts template</li>
+                                            </ul>
+                                        </li>
+                                        <li>Subscribe
+                                            <ul>
+                                                <li>Validation demo</li>
+                                                <li>Thanks pop up</li>
+                                            </ul>
+                                        </li>
+                                        <li>General toast notificaitons</li>
+                                        <li>Footer
+                                            <ul>
+                                                <li>Back to top button</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                              </div>`
+            },
+            {
+                id: '2',
+                page: {
+                    name: 'About',
+                    link: 'about.html'
+                },
+                type: 'static',
+                status: {
+                   label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                comments: `<p>
+                                Template: inner-page-full.html
+                            </p>`
+            },
+            {
+                id: '3',
+                page: {
+                    name: 'Accessibility Tools',
+                    link: 'accessibility-tools.html'
+                },
+                type: 'static',
+                status: {
+                   label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                status: {
+                   label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+            
+                comments: `<p>
+                    content to be copied from:<br/> https://www.education.gov.in/en/screen-reader-access
+                            </p>`
+            },
+            {
+                id: '4',
+                page: {
+                    name: 'Credits',
+                    link: 'credits.html'
+                },
+                type: 'static',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>
+                    content to be copied from:<br/> https://clixdashboard.tiss.edu/credits
+                            </p>`
+            },
+            {
+                id: '5',
+                page: {
+                    name: 'Terms & Conditions',
+                    link: 'terms.html'
+                },
+                type: 'static',
+                status: {
+                   label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p> Copied from - https://clixoer.tiss.edu/5752ad5a2e01310a05dca583/termsofservice.html/
+                            </p>`
+            },
+            {
+                id: '6',
+                page: {
+                    name: 'Privacy',
+                    link: 'privacy.html'
+                },
+                type: 'static',
+                status: {
+                   label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p> content to be copied from:<br/> https://clixdashboard.tiss.edu/termsofservices
+                            </p>`
+            },
+            {
+                id: '7',
+                page: {
+                    name: 'Design lab',
+                    link: 'design-lab.html'
+                },
+                type: 'static',
+                status: {
+                   label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p> Spy template used
+                            </p>`
+            },
+            {
+                id: '8',
+                page: {
+                    name: 'User Profile',
+                    link: 'user-profile.html'
+                },
+                type: 'dynamic',
+                status: {
+                   label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p> Template used: inner-page-right.html</p><ul><li>Sticky Filter - cards sort view</li><li>Internal sticky right menu</li></ul>`
+            },
+            {
+                id: '9',
+                page: {
+                    name: 'User Profile - notificaitons view all',
+                    link: 'user-notifications.html'
+                },
+                type: 'dynamic',
+                status: {
+                   label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p> Template used: inner-page-right.html</p><ul><li>Sticky Filter notificaitons</li><li>Internal sticky right menu</li><li>Infinite load</li></ul>`
+            },
+            {
+                id: '10',
+                page: {
+                    name: 'Login',
+                    link: 'login.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Basic structure done, 1st review requried.  Validation done</p>`
+            },
+            {
+                id: '11',
+                page: {
+                    name: 'Register',
+                    link: 'register.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Basic structure done, 1st review requried.  Validation done</p>`
+            },
+            {
+                id: '12',
+                page: {
+                    name: 'Find Account',
+                    link: 'find-account.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Basic structure done, 1st review requried.  Validation done</p>`
+            },
+            {
+                id: '13',
+                page: {
+                    name: 'Reset Password',
+                    link: 'reset-password.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Basic structure done, 1st review requried.  Validation done</p>`
+            },
+            {
+                id: '14',
+                page: {
+                    name: 'Error Page',
+                    link: 'error-page.html'
+                },
+                type: 'static',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Done from developer's end.</p>`
+            },
+            {
+                id: '15',
+                page: {
+                    name: 'User Bookmarks',
+                    link: 'user-bookmarks.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>View sort for cards added</p>`
+            },
+            {
+                id: '16',
+                page: {
+                    name: 'User Dashboard',
+                    link: 'user-dashboard.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'dark',
+                    color: 'light',
+                    text: 'Cancelled',
+                },
+                
+                comments: `<p>No response from client within set timeline</p>`
+            },
+            {
+                id: '17',
+                page: {
+                    name: 'Resource listing',
+                    link: 'resources-listing.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Filter - js + search</p>`
+            },
+            {
+                id: '18',
+                page: {
+                    name: 'Each Resource -01',
+                    link: 'each-resource.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Base page ready </p>`
+            },
+            {
+                id: '19',
+                page: {
+                    name: 'Each Resource - 01 view - CMS',
+                    link: 'each-resource-01-cms_editor.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>// </p>`
+            },
+            {
+                id: '20',
+                page: {
+                    name: 'Events listing',
+                    link: 'events-listing.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Filter +  search </p>`
+            },
+            {
+                id: '21',
+                page: {
+                    name: 'each event',
+                    link: 'each-event.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>// </p>`
+            },
+            {
+                id: '22',
+                page: {
+                    name: 'each event - CMS',
+                    link: 'each-event-cms.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>// </p>`
+            },
+            {
+                id: '23',
+                page: {
+                    name: 'blogs listing',
+                    link: 'blogs-listing.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Filter + search </p>`
+            },
+            {
+                id: '24',
+                page: {
+                    name: 'each blog',
+                    link: 'each-blog.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>// </p>`
+            },
+            {
+                id: '25',
+                page: {
+                    name: 'each blog - CMS',
+                    link: 'each-blog-cms.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>// </p>`
+            },
+            {
+                id: '26',
+                page: {
+                    name: 'Project page',
+                    link: 'projects-listing.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>// waiitng for client update </p>`
+            },
+            {
+                id: '27',
+                page: {
+                    name: 'FAQ',
+                    link: 'faq.html'
+                },
+                type: 'static',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>content to be copied from: https://cpd.tiss.edu/rtict/faqs.html</p>`
+            },
+            {
+                id: '28',
+                page: {
+                    name: 'Subjects',
+                    link: 'subjects.html'
+                },
+                type: 'static',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: ``
+            },
+            {
+                id: '29',
+                page: {
+                    name: 'Search all',
+                    link: 'search-all.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Common search result page</p>`
+            },
+            {
+                id: '30',
+                page: {
+                    name: 'Citation',
+                    link: 'each-citation.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Internal tab page of each resource</p>`
+            },
+            {
+                id: '31',
+                page: {
+                    name: 'Each Resources - 02',
+                    link: 'each-resource-02.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Sample page ready</p>`
+            },
+            {
+                id: '32',
+                page: {
+                    name: 'Each Resources - 02 CMS',
+                    link: 'each-resource-02-cms.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Sample page ready</p>`
+            },
+            {
+                id: '33',
+                page: {
+                    name: 'Each Resources - 03',
+                    link: 'each-resource-03.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Sample page ready</p>`
+            },
+            {
+                id: '34',
+                page: {
+                    name: 'Each Resources - 03 CMS',
+                    link: 'each-resource-03-cms_editor.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Sample page ready</p>`
+            },
+            {
+                id: '35',
+                page: {
+                    name: 'Each Resources - 04',
+                    link: 'each-resource-04.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Sample page ready</p>`
+            },
+            {
+                id: '36',
+                page: {
+                    name: 'Each Resources - 04 CMS',
+                    link: 'each-resource-04-cms.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Sample page ready</p>`
+            },
+            {
+                id: '37',
+                page: {
+                    name: 'Each Resources - 05',
+                    link: 'each-resource-05.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Sample page ready</p>`
+            },
+            {
+                id: '38',
+                page: {
+                    name: 'Each Resources - 05',
+                    link: 'each-resource-05-cms.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>Sample page ready</p>`
+            },
+            {
+                id: '39',
+                page: {
+                    name: 'User My Resources',
+                    link: 'user-my-resources.html'
+                },
+                type: 'dynamic',
+                status: {
+                    label: 'success',
+                    color: 'light',
+                    text: 'Complete',
+                },
+                
+                comments: `<p>-</p>`
+            },
+            
+            //
+        ],
+        search:{
+            selector: (cell, rowIndex, cellIndex) => cellIndex === 0 ? cell : cell
+        },
+        sort: true,
+        fixedHeader: true,
+        //height: '700px',
+        });
+
+
+        grid.render(document.getElementById('gridTable'));
+    </script>
+
+  </body>
+</html>

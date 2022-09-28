@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- open graph -->
+    <meta property="og:url"                content="https://www.techneconhealthcare.com" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="Tiss Healthcare" />
+    <meta property="og:description"        content="Vrachna Desc" />
+    <meta property="og:image"              content="https://www.techneconhealthcare.com/images/technecon_v_640.jpg" />
+    
+    <link rel="icon" href="assets/images/fav.png">
+    <title>Vrachana - Accessibility Tools</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://kit.fontawesome.com/af742371b0.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+
+    <link rel='stylesheet' href='/assets/plugins/easyAutocomplete/easy-autocomplete.css'>
+
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="assets/css/cstyle.css">
+    <link rel="stylesheet" href="assets/css/developers.css">
+    <!-- developer css if needed -->
+  </head>
+  <body>
+    <header class="">
+      <!-- top bar -->
+      <section class="top-header sticky-section">
+        <div class="container-fluid">
+  <!-- if w-100 above then g-0 below-->
+          <div class="row justify-content-start justify-content-lg-end align-items-center">
+            <div class="col-auto me-auto">
+              <div class="ist">
+                <!-- setcurrentime by js -->
+              </div>
+            </div>
+            <div class="col-auto">
+              <ul class="nav-horizonal-links top-bar-links align-items-center">
+                <li>
+                  <img src="/assets/images/static/accessablity-icon.svg" class="img-fluid icon-type me-1"> <a href="#">Accessibility Tools</a>
+                </li>
+                <li>
+                  
+                  <!-- mode button -->
+                  <div class="form-check form-switch mode-toggler">
+                    <label class="form-check-label " for="flexSwitchCheckChecked"><i class="fa-solid fa-circle-half-stroke"></i> <span  id="modeLabel">Setting</span>&nbsp;Mode</label>
+                    <input class="form-check-input " type="checkbox" id="flexSwitchCheckChecked" >
+                  </div>
+                  <!-- modebutton ends -->
+                </li>
+                <li class="font_size_manager">
+                  <button type="button" class="btn btn-sm btn-rounded btn-outline-dark" id="_smallify">-</button>
+                  
+                  <button type="button" class="btn btn-sm btn-link" id="_reset">
+                    <i class="fa-solid fa-font me-1"></i>Font Size
+                  </button>
+                  
+                  <button type="button" class="btn btn-sm btn-rounded btn-outline-dark" id="_biggify">+</button>
+                </li>
+                <li>
+                  <div class="dropdown">
+                    <button class="btn dropdown-toggle p-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa-solid fa-earth-europe"></i> English
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="#">English</a></li>
+                      <li><a class="dropdown-item" href="#">Hindi</a></li>
+                      <li><a class="dropdown-item" href="#">Marathi</a></li>
+                    </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+  
+        </div>
+        </section>
+      <!-- nav bar -->
+      <!-- w-100 -->
+      
+
+      <!-- top bar ends -->
+      
+      <!-- nav bar -->
+      <div class="container-fluid nav-layer">
+        <!-- if w-100 above then g-0 below-->
+        <div class="row justify-content-between">
+      <div class="">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid g-0">
+            <div class="d-flex">
+            <a class="navbar-brand order-2 order-lg-1 mx-2 me-lg-1" href="#">
+              <img src="assets/images/logo-vr.svg" class="img-fluid">
+            </a>
+            <button class="navbar-toggler collapsed order-1 order-lg-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <!-- <span class="navbar-toggler-icon "></span> -->
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            </div>
+            <div class="collapse navbar-collapse order-4" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-angles-right d-lg-none"></i>Home</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-angles-right d-lg-none"></i>Explore Resoruces
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Digital</a></li>
+                    <li><a class="dropdown-item" href="#">Physical</a></li>
+                    <!-- <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa-solid fa-angles-right d-lg-none"></i>Design Lab</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa-solid fa-angles-right d-lg-none"></i>Join Discussion</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa-solid fa-angles-right d-lg-none"></i>Events & Workshop</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa-solid fa-angles-right d-lg-none"></i>About</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li> -->
+              </ul>
+            
+            </div>
+
+            
+            <!-- auth notification & seaerch section -->
+            <div class="order-3 order-lg-4">
+              <ul class="nav-horizonal-links main-nav-bar-links align-items-center">
+                <li >
+                  <button class="btn theme-rounded-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSearchBox" aria-expanded="false" aria-controls="collapseSearchBox">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </li>
+                <li>
+                  <!-- notificaiton -->
+                  <!-- add class= has_new_alerts to show alert red dot-->
+              <div class="dropdown notificaitons-dropdown always-clickable py-2">
+                <button class="btn dropdown-toggle position-relative no-down-arrow theme-rounded-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-bell"></i> 
+
+                  <span class="translate-middle p-1 bg-danger border border-light rounded-circle noti-alert-pin">
+                    <span class="visually-hidden">New alerts</span>
+                  </span>
+
+                </button>
+                <div class="dropdown-menu dropdown-menu-end " aria-labelledby="dropdownMenuButton1">
+                  <div class="notification-header d-flex justify-content-between">
+                    <h6>Notificaitons</h6> <a href="#">View All</a>
+                </div>
+                <ul class="dropdown-menu-list notifications-bucket-list">
+                  <!-- unread notificaiton standard -->
+                  <li>
+                    <a href="#" class="top-text-block unread each-notificaiton" data-nid="1">
+                      <div class="top-text-heading ">You have <b>3 new themes</b> trending</div>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="top-text-light">15 minutes ago</div>
+                        <div class="read-status">
+                          <span class="badge rounded-pill bg-danger">Unread</span>
+                        </div>
+                      </div>
+                    </a> 
+                  </li>
+                  <!-- read notificaiton standard -->
+                 
+                  
+                </ul>
+                </div>
+                <!-- end of dropdown menu -->
+              </div>
+              <!-- notificaiton ends -->
+                </li>
+                <li>
+                  <!-- auth user -->
+                  <div class="dropdown">
+                    <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <!-- https://picsum.photos/40 -->
+                      <img src="/assets/images/static/default/user-profile-image.png" class="img-thumbnail rounded-circle nav-user-image" alt="Profile Image"> <span class="d-none d-md-inline-block">Anant</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="#">My Account</a></li>
+                      <li><a class="dropdown-item" href="#">Profile</a></li>
+                      <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                  </div>
+                  <!-- auth user ends -->
+                </li>
+
+                <!-- ** if user not logged in ** -->
+                <!-- reverse-combo class can be used to reverse button color -->
+                <li>
+                  <a href="#" class="btn btn-sm theme-btn-primary base-style" data-bs-toggle="modal" data-bs-target="#loginModel" ><i class="fi fi-rs-user"></i> Sign In</a>
+                </li>
+                
+                
+              </ul>
+              
+
+              
+            </div>
+             <!-- auth notification & seaerch section ends-->
+        </nav>
+
+      </div>
+     
+      </div> 
+      <!-- row ends above -->
+
+      </div>
+
+      <!-- search container --> 
+      <div class="top-search-box collapse" id="collapseSearchBox">
+
+        <div class="search-container" >
+          <div class="container">
+            <div class="row justify-content-center align-items-center">
+              <div class="col col-sm-10 col-md-9 col-lg-8">
+                <div class="searchbox-layer">
+                <button type="button" class="btn-close" aria-label="Close" id="search-close-btn"></button>
+              <form class="d-flex" name="form_search" action="/action_page.php" method="get">
+                  <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button> -->
+                  <div class="input-group mb-3 searchbox">
+                   
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button" id="searchField" placeholder="Search ...">
+                    <select class="form-select" id="inputGroupSelect01">
+                      <option selected>All</option>
+                      <option value="1">Resoruces</option>
+                      <option value="2">Events</option>
+                      <option value="3">Blogs</option>
+                    </select>
+                    <button class="form-control btn btn-seacrh-submit" type="submit" value="Submit"><i class="fi fi-rs-search"></i></button>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- search container ends -->
+
+
+      <!-- nav bar ends -->
+
+      <!-- breadcrumbs ends -->
+    </header>
+    <div class="body-container">
+    <!-- Sub header (internal pages) -->
+    <section class="sub-header">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2 class="mt-3 mb-1">Accessibility Tools</h2>
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Accessibility Tools</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section-container page-content">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p>The Ministry of Human Resource Development website complies with Guidelines for Indian Government Websites and World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.0 level A. This will enable people with visual impairments access the website using technologies, such as screen readers. The information of the website is accessible with different screen readers, such as JAWS, NVDA, SAFA, Supernova and Window-Eyes.</p>
+
+                <p>Following table lists the information about different screen readers:</p>
+                
+                <p>Information related to the various screen readers</p>
+                <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                       <tr class="table-active">
+                          <td>
+                             <strong>Screen Reader</strong>
+                          </td>
+                          <td>
+                             <strong>Website</strong>
+                          </td>
+                          <td>
+                             <strong>Free / Commercial</strong>
+                          </td>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <td>
+                             Non Visual Desktop Access (NVDA)
+                          </td>
+                          <td>
+                             <a href="http://www.nvda-project.org/" target="_blank" title="External website that opens in a new window :- Non Visual Desktop Access (NVDA)" class="ext">http://www.nvda-project.org/</a><br>
+                             (External website that opens in a new window)
+                          </td>
+                          <td>
+                             Free
+                          </td>
+                       </tr>
+                       <tr>
+                          <td>
+                             System Access To Go
+                          </td>
+                          <td>
+                             <a href="http://www.satogo.com/" target="_blank" title="External website that opens in a new window :- System Access To Go">http://www.satogo.com/</a><br>
+                             (External website that opens in a new window)
+                          </td>
+                          <td>
+                             Free
+                          </td>
+                       </tr>
+                       <tr>
+                          <td>
+                             Hal
+                          </td>
+                          <td>
+                             <a href="http://www.yourdolphin.co.uk/productdetail.asp?id=5" target="_blank" title="External website that opens in a new window :- Hal">http://www.yourdolphin.co.uk/productdetail.asp?id=5</a><br>
+                             (External website that opens in a new window)
+                          </td>
+                          <td>
+                             Commercial
+                          </td>
+                       </tr>
+                       <tr>
+                          <td>
+                             JAWS
+                          </td>
+                          <td>
+                             <a href="http://www.freedomscientific.com/jaws-hq.asp" target="_blank" title="External website that opens in a new window :- JAWS">http://www.freedomscientific.com/jaws-hq.asp</a><br>
+                             (External website that opens in a new window)
+                          </td>
+                          <td>
+                             Commercial
+                          </td>
+                       </tr>
+                       <tr>
+                          <td>
+                             Supernova
+                          </td>
+                          <td>
+                             <a href="http://www.yourdolphin.co.uk/productdetail.asp?id=1" target="_blank" title="External website that opens in a new window :- Supernova">http://www.yourdolphin.co.uk/productdetail.asp?id=1</a><br>
+                             (External website that opens in a new window)
+                          </td>
+                          <td>
+                             Commercial
+                          </td>
+                       </tr>
+                       
+                    </tbody>
+                 </table>
+                 </div>
+
+        </div>
+        </div>
+      </div>
+    </section>
+    <!-- Sub header ends -->
+
+    <!--  -->
+    </div> 
+    <!-- body container ends above -->
+
+    
+    <!-- alerts -->
+    <!-- alerts ends -->
+
+    
+
+    
+    <!-- content body-->
+
+      <!-- resources slider ends -->
+
+
+
+    <!-- <section>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            
+            <h1 class="title text-center align-items-center">
+              Dummy
+              <span></span>
+            </h1>
+  
+          </div>
+        </div>
+  
+      </div>
+    </section> -->
+
+    <!-- content body ends-->
+
+    <!-- model boxes -->
+    <!-- model boxes ends -->
+    
+    <footer class="">
+      <!-- nav lists -->
+      <div class="container">
+        <div class="row flex-column flex-lg-row justify-content-lg-between">
+          <div class="col-lg-5">
+            
+            <div class="row flex-column">
+              <div class="col">
+                <div class="mb-4">
+                    <div class="d-flex justify-content-start align-items-end">
+                      <div class="d-flex-inline my-1 ms-0 me-2">
+                      <img src="https://via.placeholder.com/150/0000FF/808080 ?main logo.com" class="img-fluid mb-2">
+                      </div>
+
+                      <div class="d-flex-inline m-1">
+                      <p>Seeded by</p>
+                      <img src="https://via.placeholder.com/150X80/0000FF/808080 ?seeded logo.com" class="img-fluid mb-2">
+                      </div>
+                      
+                    </div>
+                </div>
+                <p>
+                  unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <a href="#">Know More</a>
+                </p>
+              </div>
+            
+             
+            </div>
+
+          </div>
+
+          <div class="col-lg-5">
+            <div class="row flex-column flex-md-row">
+              <div class="col">
+                <div class="quick-nav">
+                <h5>Quick links</h5>
+                <ul class="nav-list">
+                  <li><a class="hlink" href="#">About</a></li>
+                  <li><a class="hlink" href="#">Credits</a></li>
+                  <li><a class="hlink" href="#">Terms of Service</a></li>
+                  <li><a class="hlink" href="#">Privacy Policy</a></li>
+                  <li><a class="hlink" href="#">Accessibility</a></li>
+                  <li><a class="hlink" href="#" target="_blank">GitHub</a></li>
+                </ul>
+              </div>
+              </div>
+    
+              <div class="col">
+                <div class="quick-nav contact-data">
+                <h5>Contact us</h5>
+                <ul>
+                  <li>
+                    <div>
+                      <i class="fi fi-rs-map-marker"></i>
+                    </div>
+                    <address>
+                      Tata Institute of Social Sciences
+                      V.N. Purav Marg
+                      Deonar
+                      Mumbai-400088
+                    </address>
+                  </li>
+                  
+                  <li>
+                    <div>
+                      <i class="fi fi-rs-clock"></i>
+                    </div>
+                    <p>
+                      Visiting Hours: 10 AM to 6 PM
+                    </p>
+                  </li>
+
+                  <li>
+                    <div>
+                      <i class="fi fi-rs-smartphone"></i>
+                    </div>
+                    <p>
+                      <a href="tel:+918081329947">+91 8081329947</a>
+                    </p>
+                  </li>
+
+                  <li>
+                    <div>
+                      <i class="fi fi-rs-envelope"></i>
+                    </div>
+                    <p>
+                      <a href="mailto:RACHANA .tiss.edu">rachana@RACHANA .tiss.edu</a>
+                    </p>
+                  </li>
+
+                  <li>
+                    <div>
+                      <i class="fi fi-rs-computer"></i>
+                    </div>
+                    <p>
+                      Visit our site: <a href="#">RACHANA .tiss.edu</a>
+                    </p>
+                  </li>
+
+
+                </ul>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          
+          
+        </div>
+        <div class="row justify-content-between align-items-center  mt-5">
+          <div class="col col-md-7 col-lg-9">
+                <div class="copyright-section mb-5">
+                  <p>
+                    © 2022 Tata Institute of Social Sciences
+                  </p>
+                  <p>
+                    Except where otherwise noted, content on this site is licensed under a
+    Creative Commons Attribution 4.0 International license 
+                  </p>
+                  <img src="assets/images/static/licence-ccby-01.jpg" class="img-fluid">
+              </div>
+          </div>
+          <div class="col col-md-4 col-lg-3">
+          <div class="social-nav-list mb-5">
+            <ul>
+              <li><a href="#"> <i class="fa-brands fa-facebook-f"></i> </a></li>
+             
+              <li><a href="#"> <i class="fa-brands fa-twitter"></i> </a></li>
+              <li><a href="#"> <i class="fa-brands fa-youtube"></i> </a></li>
+              <li><a href="#"> <i class="fa-brands fa-linkedin-in"></i> </a></li>
+            </ul>
+          </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- nav list ends -->
+
+      <!-- copyright -->
+      <!-- copyrigh ends -->
+      <!-- to top button -->
+      <a id="back-to-top" href="#" class="show"><i class="fas fa-arrow-up"></i></a>
+      <!-- to top button ends -->
+      
+    </footer>
+
+    <!-- model -->
+    <!-- subscribe Modal -->
+<div class="modal fade" id="msgModel" tabindex="-1" aria-labelledby="msgModellabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <!-- <h5 class="modal-title" id="msgModellabel">Alert</h5> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="subscribe-content">
+        <div class="p-5 text-center">
+          <div class="Tick">
+
+            <svg width="32px" height="25px" viewBox="0 0 32 25">
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Artboard" transform="translate(-384.000000, -217.000000)" fill-rule="nonzero" fill="#FFFFFF">
+                <g id="Group" transform="translate(360.000000, 189.000000)">
+                    <path d="M27.4142136,40.5857864 C26.633165,39.8047379 25.366835,39.8047379 24.5857864,40.5857864 C23.8047379,41.366835 23.8047379,42.633165 24.5857864,43.4142136 L34,52.8284271 L55.4142136,31.4142136 C56.1952621,30.633165 56.1952621,29.366835 55.4142136,28.5857864 C54.633165,27.8047379 53.366835,27.8047379 52.5857864,28.5857864 L34,47.1715729 L27.4142136,40.5857864 Z" id="Path-2"></path>
+                </g>
+            </g>
+        </g>
+    </svg>
+          </div>
+        <h3 class="text-center">Thanks for subscribing</h3>
+        <p>You have successfully subscribed to our list.We will let you know when we launch.</p>
+        </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer border-top-0">
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- subscribe model ends above -->
+
+<!-- login Modal -->
+<div class="modal fade" id="loginModel" tabindex="-1" aria-labelledby="loginModellabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-style--section-08">
+      <div class="modal-header border-bottom-0 pb-0">
+     
+        <!-- <h5 class="modal-title" id="loginModellabel">Login</h5> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body pt-0">
+
+        <!-- section  login-->
+        <div class="container">
+          <div class="row">
+            <div class="col text-center">
+              <h4 class="modal-body-title">Login</h4>
+              <p>Sign in with</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+             <ul class="nav-horizonal-links social-connect">
+               <li>
+                 <a href="#" class="google-btn"><i class="fa-solid fa-g"></i></a>
+                </li>
+                <li>
+                  <a href="#" class="ln-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                 </li>
+                 <li>
+                  <a href="#" class="fb-btn"><i class="fa-brands fa-facebook"></i></a>
+                 </li>
+            </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="seperator-section my-2">
+              <hr>
+              <div class="msg">or use your email</div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- this alert symbol can be stored in one extended file or master file-->
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </symbol>
+            <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+            </symbol>
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </symbol>
+          </svg>
+          <!-- alert symbol ends -->
+
+          <!-- alerts here for pup up-->
+          <div class="row">
+            <div class="col-10 mx-auto">
+              <div class="alerts-container">
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                  <div>
+                    An example danger alert with an icon
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- alert ends -->
+
+          <div class="row">
+            <div class="col-10 mx-auto">
+              <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="">
+                  <label for="loginPassword" class="form-label">Password</label>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password" aria-label="Password" aria-describedby="toggle-password">
+                  <button class="btn btn-outline-secondary" data-toggle="#loginPassword" type="button" id="toggle-password-btn"><i class="toggle-password fas fa-eye-slash"></i></button>
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                
+                <div class="d-grid gap-2 col-12 mx-auto mb-5">
+                  <button type="submit" class="btn btn-lg btn-success">Login in</button>
+                  <!-- <button class="btn btn-primary" type="button">Button</button> -->
+                </div>
+                <div class="d-flex justify-content-between flex-wrap">
+                  <div class="mb-3"><a href="btn btn-link">Forgot Password?</a></div> <div lass="mb-3">Need a Account? <a href="btn btn-link">Register</a></div>
+                </div>
+                
+              </form>
+            </div>
+          </div>
+
+          
+        </div>
+
+        <!-- section login ends -->
+
+
+      </div>
+      <div class="modal-footer border-top-0">
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- login model ends above -->
+
+
+    <!-- model ends -->
+
+        <!-- toasts -->
+  
+    
+        
+        <!--  toast ends -->
+
+        <!-- custom notification -->
+
+        
+          <!-- Position it: -->
+          <!-- - `.toast-container` for spacing between toasts -->
+          <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
+          <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+          <div class="toast-container position-fixed bottom-0 end-0 p-3 " style="z-index: 99">
+
+            <div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true" id="general-toast">
+              <div class="d-flex">
+                <div class="toast-body">
+                  Hello, world! This is a toast message.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+            </div>
+        
+            <!-- Then put toasts within -->
+            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                <i class="fa-solid fa-bell me-2"></i>
+                <strong class="me-auto">Bootstrap</strong>
+                <small class="text-muted">just now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                See? Just like this.
+              </div>
+            </div>
+        
+            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                <i class="fa-solid fa-bell me-2"></i>
+                <strong class="me-auto">Bootstrap</strong>
+                <small class="text-muted">2 seconds ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Heads up, toasts will stack automatically
+              </div>
+            </div>
+          </div>
+        
+
+        <!-- custom notificaiton ends -->
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <!-- <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script> -->
+    <script src="assets/js/bootstrap.bundle.js"></script>
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="assets/js/moment.js"></script>
+    <script type='application/javascript' src='assets/js/fastclick.js'></script>
+    <script src="assets/js/jquery.matchHeight.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="assets/plugins/easyAutocomplete/jquery.easy-autocomplete.js"></script>
+
+    <script src="assets/js/cscript.js"></script>
+    <script src="assets/js/pages/_partials/dropdown_notificaitons.js"></script>
+
+  
+
+    
+    
+    <!-- Optional JavaScript other scripts-->
+    <!-- on page JavaScript -->
+    <script>
+      $(document).ready(function(){
+      
+      //match height initialize
+      //$('classORid_name').matchHeight();
+      
+      //doc ready ends  
+      });
+    </script>
+    
+  </body>
+</html>
